@@ -24,3 +24,4 @@ $db = new Database(); // connexion à la db
 // objet pour manipuler la table Personne
 $table = new Table($db->GetConnection(), "Personnes");
 var_dump($table->Select(0)); // récupère l'id 0 de la table personne
+var_dump($table->SelectAll()); // récupère l'id 0 de la table personne
