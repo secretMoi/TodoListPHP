@@ -1,7 +1,7 @@
 <?php
 namespace Models;
 
-class Todo
+class Todo extends BaseModel
 {
     public $ID;
     public $Titre;

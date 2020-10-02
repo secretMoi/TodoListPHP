@@ -2,6 +2,8 @@
 
 namespace Controllers\Database;
 
+use PDO;
+
 class Database
 {
 	private $host = "localhost";
@@ -14,10 +16,10 @@ class Database
 
 	public function __construct()
 	{
-		$this->pdo = new \PDO("mysql:host={$this->host};dbname={$this->name};port={$this->port}",$this->user,$this->password);
+		$this->pdo = new PDO("mysql:host={$this->host};dbname={$this->name};port={$this->port}",$this->user,$this->password);
 	}
 
-	public function GetConnection(): \PDO{
+	public function GetConnection(): PDO{
 		return $this->pdo;
 	}
 }
