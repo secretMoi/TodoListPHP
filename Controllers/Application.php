@@ -14,8 +14,12 @@ use PDO;
  */
 class Application
 {
+	public $title = "ToutDoux";
+
 	private $_database; // stocke la database
 	private static $Instance; // instance de App comme singleton
+
+	private $_css = ROOT . "Views/css/bootstrap-slate.css";
 
 	private function __construct()
 	{
@@ -47,5 +51,12 @@ class Application
 	 */
 	public function Connection() : PDO{
 		return $this->_database->GetConnection();
+	}
+
+	/**
+	 * @return string Retourne la chemin du fichier CSS à utiliser pour les vues
+	 */
+	public function GetCss() : string{
+		return $this->_css;
 	}
 }

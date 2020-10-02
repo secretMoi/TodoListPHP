@@ -27,12 +27,21 @@ class Table
 		}
 	}
 
+	/**
+	 * Utilise la connexion $database pour travailler sur la table $table
+	 * @param PDO $database Connexion à la bdd à utiliser
+	 * @param string $table Nom de la table à utiliser
+	 */
 	public function __construct2(PDO $database, string $table)
 	{
 		$this->_database = $database;
 		$this->_table = $table;
 	}
 
+	/**
+	 * Utilise la connexion settée dans la classe application
+	 * @param string $table Nom de la table à utiliser
+	 */
 	public function __construct1(string $table)
 	{
 		$this->__construct(Application::Instance()->Connection(), $table);
