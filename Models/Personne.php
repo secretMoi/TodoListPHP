@@ -3,6 +3,10 @@ namespace Models;
 
 class Personne
 {
-    public $Id;
+    public $ID;
     public $Nom;
+    public $Prenom;
+    public $AdresseMail;
+    public $MotDePasse;
+    public $Status;
 }

@@ -3,7 +3,7 @@ namespace Models;
 
 class Gerer
 {
-    public $Id;
-    public $IdPersonne;
-    public $IdTodo;
+    public $ID;
+    public $IDPers;
+    public $IDTodo;
 }

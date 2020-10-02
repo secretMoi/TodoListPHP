@@ -3,7 +3,7 @@ namespace Models;
 
 class Todo
 {
-    public $Id;
+    public $ID;
     public $Titre;
     public $Contenu;
     public $DateCreation;

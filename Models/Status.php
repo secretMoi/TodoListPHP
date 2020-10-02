@@ -3,6 +3,6 @@ namespace Models;
 
 class Status
 {
-    public $Id;
+    public $ID;
     public $Nom;
 }
