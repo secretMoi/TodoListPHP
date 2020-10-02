@@ -1,7 +1,7 @@
 <?php
 namespace Models;
 
-class Personne
+class Personnes extends BaseModel
 {
     public $ID;
     public $Nom;

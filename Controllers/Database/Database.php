@@ -16,4 +16,8 @@ class Database
 	{
 		$this->pdo = new \PDO("mysql:host={$this->host};dbname={$this->name};port={$this->port}",$this->user,$this->password);
 	}
+
+	public function GetConnection(): \PDO{
+		return $this->pdo;
+	}
 }
