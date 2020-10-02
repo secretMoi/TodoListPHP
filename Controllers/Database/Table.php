@@ -4,6 +4,7 @@
 namespace Controllers\Database;
 
 
+use Controllers\Application;
 use Controllers\HandleModel;
 use Models\BaseModel;
 use PDO;
@@ -13,10 +14,28 @@ class Table
 	private $_database;
 	private $_table;
 
-	public function __construct(PDO $database, string $table)
+	/**
+	 * Permet d'avoir plusieurs constructeurs
+	 */
+	public function __construct()
+	{
+		$arguments = func_get_args();
+		$numberOfArguments = func_num_args();
+
+		if (method_exists($this, $function = '__construct'.$numberOfArguments)) {
+			call_user_func_array(array($this, $function), $arguments);
+		}
+	}
+
+	public function __construct2(PDO $database, string $table)
 	{
 		$this->_database = $database;
 		$this->_table = $table;
+	}
+
+	public function __construct1(string $table)
+	{
+		$this->__construct(Application::Instance()->Connection(), $table);
 	}
 
 	/**
