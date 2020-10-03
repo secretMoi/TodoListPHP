@@ -7,38 +7,81 @@ namespace Controllers;
 class Router
 {
 	private $_delimiter = '/'; // délimiteur séparant le controleur de l'action dans l'url
-	private $_pageGetter = "page";
-	private $_defaultPage = "Home/Home";
+	private $_pageGetter = "page"; // élément du get qui sera cherché pour l'url
+	private $_defaultPage; // page par défaut à appeler
 
 	private $_controller;
 	private $_action;
 
+	public function __construct()
+	{
+		$this->_defaultPage = "Home{$this->_delimiter}Home";
+	}
+
+	/**
+	 * Génère la page par défaut
+	 */
+	private function DefaultPage(){
+		list($controller, $action) = $this->SeparateUrl($this->_defaultPage);
+		$this->_controller =  $this->FormatController($controller);
+		$this->_action = $this->FormatAction($action);
+	}
+
 	/**
 	 * Permet de router une url vers un controleur
-	 * @param string $page Url de la page à charger
+	 * @param array $page Url de la page à charger
 	 */
-	public function Route(string $page): void{
-		if(!isset($page) || empty($page)) {
-			$this->_controller = "Home";
-			$this->_action = "Home";
+	public function Route(array $page): void{
+		// si aucune page n'est passée en paramètre
+		if(!isset($page[$this->_pageGetter])){
+			$this->DefaultPage(); // va sur la page par défaut
+			$this->Instantiate();
+			return;
 		}
 
-		$page = explode($this->_delimiter, $page); // on sépare l'url grâce aux .
+		$page = $page[$this->_pageGetter]; // récupère l'url de la page demandée
 
-		$this->_controller = '\Controllers\Pages\\' . ucfirst($page[0]); // génère le nom et le namespace du controleur à appeler
-		$this->_action = ucfirst($page[1]); // la page à afficher correspond au 2e élément
+		list($controller, $action) = $this->SeparateUrl($page);
+		$this->_controller = $this->FormatController($controller);
+		$this->_action = $this->FormatAction($action); // la page à afficher correspond au 2e élément
 
 		$this->Instantiate();
 	}
 
+	/**
+	 * Explose une url
+	 * @param string $url Url à séparer
+	 * @return array Tableau contenant toutes les valeurs séparées
+	 */
+	private function SeparateUrl(string $url) : array {
+		return explode($this->_delimiter, $url); // on sépare l'url grâce aux /
+	}
+
+	/**
+	 * Génère le chemin d'un controleur
+	 * @param string $controller Controleur à instancier
+	 * @return string Retourne le namespace complet du controleur
+	 */
+	private function FormatController(string $controller) : string{
+		return '\Controllers\Pages\\' . ucfirst($controller); // génère le nom et le namespace du controleur à appeler
+	}
+
+	/**
+	 * Génère le nom de l'action
+	 * @param string $action Nom de base de l'action à exécuter
+	 * @return string Retourne le nom de l'action
+	 */
+	private function FormatAction(string $action) : string{
+		return ucfirst($action); // génère le nom et le namespace du controleur à appeler
+	}
 
 	/**
 	 * Instancie un controleur et appelle son action
 	 */
 	public function Instantiate(){
-		if(class_exists($this->_controller)){
+		if(class_exists($this->_controller)){ // si le controleur existe
 			$this->_controller = new $this->_controller(); // instancie le controleur
-			if(method_exists ($this->_controller, $this->_action))
+			if(method_exists ($this->_controller, $this->_action)) // si l'action existe
 				$this->_controller->{$this->_action}(); // appelle la méthode affichant la page
 		}
 	}

@@ -8,4 +8,8 @@ class Home extends BaseController
 		$coucou = "coucou";
 		$this->Render("home", compact($coucou));
 	}
+
+	public function Test(){
+		$this->Render("homes");
+	}
 }

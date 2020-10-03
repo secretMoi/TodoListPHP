@@ -12,7 +12,7 @@ require ROOT . 'Controllers/Application.php';
 Application::Instance();
 
 $router = new Router(); // init le routeur
-$router->Route($_GET['p']); // lui donne la page de l'url
+$router->Route($_GET); // lui donne la page de l'url
 
 // génération d'un hash de sécurité
 $s = new Security();
