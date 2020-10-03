@@ -52,10 +52,13 @@ class Table
 	 * @param int $id id de l'enregistrement à récupérer
 	 * @return BaseModel Retourne un model
 	 */
-	public function Select(int $id) : BaseModel{
+	public function Select(int $id) : ?BaseModel{
 		$req = "SELECT * FROM {$this->_table} WHERE ID={$id}";
 		$result = $this->_database->query($req);
 		$result = $result->fetch(PDO::FETCH_ASSOC);
+
+		if(!$result)
+			return null;
 
 		$model = HandleModel::LoadModel($this->_table);
 		$model->Hydrate($result);

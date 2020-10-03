@@ -11,7 +11,7 @@ use Controllers\Application;
 
 	<title><?= Application::Instance()->title; ?></title>
 
-	<link href="<?= Application::Instance()->GetCss(); ?>" rel="stylesheet">
+	<link href="<?= Application::Instance()->GetCss(); ?>" rel="stylesheet" media="screen">
 </head>
 
 <body>

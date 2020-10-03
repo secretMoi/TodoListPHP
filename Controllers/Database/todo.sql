@@ -1,13 +1,13 @@
 CREATE DATABASE todo;
 
 CREATE TABLE todo.Status (
-	ID INT NOT NULL,
+	ID INT NOT NULL AUTO_INCREMENT,
 	Nom varchar(30),
 	PRIMARY KEY (ID)
 ) ENGINE=InnoDB;
 
 CREATE TABLE todo.Personnes (
-    ID int NOT NULL,
+    ID int NOT NULL AUTO_INCREMENT,
     Nom varchar(30),
     Prenom varchar(30),
     AdresseMail varchar(100),
@@ -18,7 +18,7 @@ CREATE TABLE todo.Personnes (
 ) ENGINE=InnoDB;
 
 CREATE TABLE todo.Todo (
-    ID int NOT NULL,
+    ID int NOT NULL AUTO_INCREMENT,
     Titre varchar(30),
     DateCreation DateTime,
     DateModif DateTime,
@@ -28,7 +28,7 @@ CREATE TABLE todo.Todo (
 ) ENGINE=InnoDB;
 
 CREATE TABLE todo.Gerer (
-	ID INT NOT NULL,
+	ID INT NOT NULL AUTO_INCREMENT,
 	IDPers INT,
 	IDTodo INT,
 	PRIMARY KEY (ID),

@@ -19,7 +19,7 @@ class Application
 	private $_database; // stocke la database
 	private static $Instance; // instance de App comme singleton
 
-	private $_css = ROOT . "Views/css/bootstrap-slate.css";
+	private $_css = "Views/css/bootstrap-slate.css";
 
 	private function __construct()
 	{
@@ -57,6 +57,6 @@ class Application
 	 * @return string Retourne la chemin du fichier CSS à utiliser pour les vues
 	 */
 	public function GetCss() : string{
-		return $this->_css;
+		return str_replace('\\', '/', $this->_css);
 	}
 }
