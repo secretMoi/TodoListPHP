@@ -4,6 +4,9 @@ use Controllers\Application;
 use Controllers\Authentification\Security;
 use Controllers\Database\Table;
 use Controllers\Router;
+use Models\Gerer;
+use Models\Personnes;
+use Models\Todo;
 
 
 // trouve le dossier courant
@@ -18,12 +21,16 @@ $router->Route($_GET); // lui donne la page de l'url
 $s = new Security();
 //echo $s->Hash("coucou");
 
-$table = new Table("Personnes"); // objet pour manipuler la table Personne
+$todoTable = new Table(Todo::class);
+$gererTable = new Table(Gerer::class);
 
-$personne = new \Models\Personnes();
+$todo = new Todo("a", 'z', 'e', 'f', 'g');
+$gerer = new Gerer('q', 's');
 
-$personne->Nom = "a";
-$personne->Prenom = "az";
+
+
+/*$model->Nom = "a";
+$model->Prenom = "az";*/
 //$table->Insert($personne);
 //var_dump($table->Select(1)); // récupère l'id 0 de la table personne
 //var_dump($table->SelectAll()); // récupère tous les enregistrements de la table personne

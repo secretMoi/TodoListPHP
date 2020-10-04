@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Controllers\Database;
-
 
 use Controllers\Application;
 use Controllers\HandleModel;

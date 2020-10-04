@@ -6,6 +6,18 @@ namespace Models;
 
 class BaseModel
 {
+	/**
+	 * Permet d'avoir plusieurs constructeurs
+	 */
+	public function __construct()
+	{
+		$arguments = func_get_args();
+		$numberOfArguments = func_num_args();
+
+		if (method_exists($this, $function = '__construct'.$numberOfArguments)) {
+			call_user_func_array(array($this, $function), $arguments);
+		}
+	}
 
 	/**
 	 * Associe les colonne d'un enregistrement de la bdd dans nos modèles
