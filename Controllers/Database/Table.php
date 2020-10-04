@@ -33,7 +33,7 @@ class Table
 	public function __construct2(PDO $database, string $table)
 	{
 		$this->_database = $database;
-		$this->_table = $table;
+		$this->_table = $this->CleanClassNameFromNamespace($table);
 	}
 
 	/**
@@ -43,6 +43,14 @@ class Table
 	public function __construct1(string $table)
 	{
 		$this->__construct(Application::Instance()->Connection(), $table);
+	}
+
+	/**
+	 * @param string $namespace Namespace avec la classe à nettoyer
+	 * @return string Renvoie uniquement la classe sans le namespace
+	 */
+	private function CleanClassNameFromNamespace(string $namespace) : string{
+		return substr(strrchr($namespace, '\\'), 1);
 	}
 
 	/**

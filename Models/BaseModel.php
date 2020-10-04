@@ -28,4 +28,19 @@ class BaseModel
 		foreach ($fields as $key => $value) // parcourt le tableau des champs
 			$this->$key = $value;
 	}
+
+	/**
+	 * Cast un objet en une classe
+	 * @param object $instance Objet par défaut à caster
+	 * @param string $className Classe de destination (avec namespace)
+	 * @return mixed Retourne une instance hydratée de l'objet demandé
+	 */
+	public static function Cast(object $instance, string $className)	{
+		return unserialize(sprintf(
+			'O:%d:"%s"%s',
+			\strlen($className),
+			$className,
+			strstr(strstr(serialize($instance), '"'), ':')
+		));
+	}
 }

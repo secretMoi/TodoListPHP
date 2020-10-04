@@ -4,6 +4,7 @@ use Controllers\Application;
 use Controllers\Authentification\Security;
 use Controllers\Database\Table;
 use Controllers\Router;
+use Models\BaseModel;
 use Models\Gerer;
 use Models\Personnes;
 use Models\Todo;
@@ -23,11 +24,20 @@ $s = new Security();
 
 $todoTable = new Table(Todo::class);
 $gererTable = new Table(Gerer::class);
+$personneTable = new Table(Personnes::class);
 
 $todo = new Todo("a", 'z', 'e', 'f', 'g');
-$gerer = new Gerer('q', 's');
+
+$idPers = $personneTable->Select(7);
+$idPers = BaseModel::Cast($idPers, Personnes::class);
+
+$idTodo = $todoTable->Select(1);
+$idTodo = BaseModel::Cast($idTodo, Todo::class);
+$gerer = new Gerer($idPers->ID, $idTodo->ID);
 
 
+//$todoTable->Insert($todo);
+//$gererTable->Insert($gerer);
 
 /*$model->Nom = "a";
 $model->Prenom = "az";*/
