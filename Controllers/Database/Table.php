@@ -87,6 +87,11 @@ class Table
 		return $models;
 	}
 
+	/**
+	 * Permet d'insérer des données dans la bdd
+	 * @param BaseModel $model Modèle de données à insérer dans la bdd
+	 * @return bool true si l'insertion s'est bien passée, false sinon
+	 */
 	public function Insert(BaseModel $model) : bool{
 		$data = get_object_vars($model); // récupère les données du modèle
 		$fields = array_keys($data); // récupère les champs du modèle
@@ -95,7 +100,7 @@ class Table
 		foreach ($data as $key => $value)
 		{
 			if(is_null($value)){ // si aucune valeur n'est settée
-				// supprime les entrées des tableaux
+				// supprime les entrées vides des tableaux
 				unset($fields[$index]);
 				unset($data[$key]);
 			}
@@ -108,9 +113,6 @@ class Table
 		$req = $req . "VALUES (:" . implode(', :', $fields) . ")";
 
 		$result = $this->_database->prepare($req);
-		/*foreach ($fields as $field){
-			$result->bindValue(':' . $field, $data[$field]);
-		}*/
 
 		return $result->execute($data);
 	}

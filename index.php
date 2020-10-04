@@ -24,6 +24,6 @@ $personne = new \Models\Personnes();
 
 $personne->Nom = "a";
 $personne->Prenom = "az";
-$table->Insert($personne);
+//$table->Insert($personne);
 //var_dump($table->Select(1)); // récupère l'id 0 de la table personne
 //var_dump($table->SelectAll()); // récupère tous les enregistrements de la table personne
