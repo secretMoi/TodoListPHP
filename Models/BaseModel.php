@@ -4,6 +4,8 @@
 namespace Models;
 
 
+use function strlen;
+
 class BaseModel
 {
 	/**
@@ -38,7 +40,7 @@ class BaseModel
 	public static function Cast(object $instance, string $className)	{
 		return unserialize(sprintf(
 			'O:%d:"%s"%s',
-			\strlen($className),
+			strlen($className),
 			$className,
 			strstr(strstr(serialize($instance), '"'), ':')
 		));

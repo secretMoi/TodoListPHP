@@ -2,6 +2,7 @@
 
 use Controllers\Application;
 use Controllers\Authentification\Security;
+use Controllers\Database\RequestBuilder;
 use Controllers\Database\Table;
 use Controllers\Router;
 use Models\BaseModel;
@@ -26,8 +27,6 @@ $todoTable = new Table(Todo::class);
 $gererTable = new Table(Gerer::class);
 $personneTable = new Table(Personnes::class);
 
-$todo = new Todo("a", 'z', 'e', 'f', 'g');
-
 $idPers = $personneTable->Select(7);
 $idPers = BaseModel::Cast($idPers, Personnes::class);
 
@@ -35,8 +34,15 @@ $idTodo = $todoTable->Select(1);
 $idTodo = BaseModel::Cast($idTodo, Todo::class);
 $gerer = new Gerer($idPers->ID, $idTodo->ID);
 
+$todoModel = new Todo("a", 'z', 'e', 'f', 'g');
 
-//$todoTable->Insert($todo);
+$test = new RequestBuilder();
+$test->Select("*")
+	->Selects(array("nom", "prenom"))
+	->From("Personnes");
+var_dump($test);
+
+//$todoTable->Insert($todoModel);
 //$gererTable->Insert($gerer);
 
 /*$model->Nom = "a";
