@@ -86,4 +86,32 @@ class Table
 
 		return $models;
 	}
+
+	public function Insert(BaseModel $model) : bool{
+		$data = get_object_vars($model); // récupère les données du modèle
+		$fields = array_keys($data); // récupère les champs du modèle
+
+		$index = 0;
+		foreach ($data as $key => $value)
+		{
+			if(is_null($value)){ // si aucune valeur n'est settée
+				// supprime les entrées des tableaux
+				unset($fields[$index]);
+				unset($data[$key]);
+			}
+
+			$index++;
+		}
+
+		// prépare la req sql
+		$req = "INSERT INTO {$this->_table} (" . implode(', ', $fields) . ") ";
+		$req = $req . "VALUES (:" . implode(', :', $fields) . ")";
+
+		$result = $this->_database->prepare($req);
+		/*foreach ($fields as $field){
+			$result->bindValue(':' . $field, $data[$field]);
+		}*/
+
+		return $result->execute($data);
+	}
 }
