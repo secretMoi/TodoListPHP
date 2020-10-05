@@ -19,7 +19,7 @@ class Application
 	private $_database; // stocke la database
 	private static $Instance; // instance de App comme singleton
 
-	private $_css = "Views/css/bootstrap-slate.css";
+	public $Css = "Views/css/bootstrap-slate.css";
 	public $Menu = "Views/Parts/menu.php";
 	public $Navbar = "Views/Parts/navbar.php";
 
@@ -54,12 +54,4 @@ class Application
 	public function Connection() : PDO{
 		return $this->_database->GetConnection();
 	}
-
-	/**
-	 * @return string Retourne le chemin du fichier CSS à utiliser pour les vues
-	 */
-	public function GetCss() : string{
-		return str_replace('\\', '/', $this->_css);
-	}
-
 }

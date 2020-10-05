@@ -1,14 +1,7 @@
 <?php
 
 use Controllers\Application;
-use Controllers\Authentification\Security;
-use Controllers\Database\RequestBuilder;
-use Controllers\Database\Table;
 use Controllers\Router;
-use Models\BaseModel;
-use Models\Gerer;
-use Models\Personnes;
-use Models\Todo;
 
 
 // trouve le dossier courant
