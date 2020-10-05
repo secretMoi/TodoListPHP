@@ -2,9 +2,7 @@
 
 namespace Controllers\Pages\Parts;
 
-use Controllers\Pages\BaseController;
-
-class FinishedBox extends BaseController
+class FinishedBox extends BaseParts
 {
 	private $_filePart = "Boxes/Finished"; // fichier de vue à afficher
 	private $__header; // données à afficher
@@ -12,54 +10,46 @@ class FinishedBox extends BaseController
 	private $__content; // données à afficher
 
 	/**
-	 * Permet d'avoir plusieurs constructeurs
+	 * @param string $header Header à placer dans la FinishedBox
+	 * @param string $title Titre à placer dans la FinishedBox
+	 * @param string $content Contenu à placer dans la FinishedBox
 	 */
-	public function __construct()
-	{
-		$arguments = func_get_args();
-		$numberOfArguments = func_num_args();
-
-		if (method_exists($this, $function = '__construct'.$numberOfArguments)) {
-			call_user_func_array(array($this, $function), $arguments);
-		}
-	}
-
 	public function __construct3(string $header, string $title, string $content){
 		$this->Header($header);
 		$this->Title($title);
 		$this->Content($content);
 	}
 
-	private function GetThisAttributes() : array{
-		$attributes = get_object_vars($this);
-		$return = array();
-
-		foreach ($attributes as $key => $value){
-			if(strpos($key, '__') === 0){
-				$key = ltrim($key, '__');
-				$return[$key] = $value;
-			}
-
-		}
-
-		return $return;
-	}
-
+	/**
+	 * @param string $header Header à placer dans la FinishedBox
+	 * @return string Retourne le Header de la FinishedBox
+	 */
 	public function Header(string $header) : string{
 		$this->__header = $header;
 		return $this->__header;
 	}
 
+	/**
+	 * @param string $title Titre à placer dans la FinishedBox
+	 * @return string Retourne le Titre de la FinishedBox
+	 */
 	public function Title(string $title) : string{
 		$this->__title = $title;
 		return $this->__title;
 	}
 
+	/**
+	 * @param string $content Contenu à placer dans la FinishedBox
+	 * @return string Retourne le contenu de la FinishedBox
+	 */
 	public function Content(string $content) : string{
 		$this->__content = $content;
 		return $this->__content;
 	}
 
+	/**
+	 * Affiche la partie FinishedBox
+	 */
 	public function Display() : void{
 		extract($this->GetThisAttributes());
 		$this->AddPart($this->_filePart, compact('header', 'title', 'content'));
@@ -71,5 +61,12 @@ class FinishedBox extends BaseController
 	 */
 	public function Elements(array $elements) : void{
 		$this->AddPart($this->_filePart, array($elements));
+	}
+
+	/**
+	 * @return array Retourne la liste des propriétés de l'objet
+	 */
+	protected function GetInternalAttributes() : array{
+		return get_object_vars($this);
 	}
 }

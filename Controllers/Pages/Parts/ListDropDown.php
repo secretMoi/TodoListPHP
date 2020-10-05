@@ -2,25 +2,10 @@
 
 namespace Controllers\Pages\Parts;
 
-use Controllers\Pages\BaseController;
-
-class ListDropDown extends BaseController
+class ListDropDown extends BaseParts
 {
 	private $_filePart = "ListDropDown"; // fichier de vue à afficher
-	private $_elements; // données à afficher
-
-	/**
-	 * Permet d'avoir plusieurs constructeurs
-	 */
-	public function __construct()
-	{
-		$arguments = func_get_args();
-		$numberOfArguments = func_num_args();
-
-		if (method_exists($this, $function = '__construct'.$numberOfArguments)) {
-			call_user_func_array(array($this, $function), $arguments);
-		}
-	}
+	private $__elements; // données à afficher
 
 	public function __construct1($elements){
 		$this->Fill($elements);
@@ -31,21 +16,31 @@ class ListDropDown extends BaseController
 	 * @param array $elements Eléments à insérer
 	 */
 	public function Fill(array $elements) : void{
-		$this->_elements = $elements;
+
+		$this->__elements = $elements;
 	}
 
 	/**
 	 * Affiche la ListDropDown avec les données déjà entrées
 	 */
 	public function Display() : void{
-		$this->Elements($this->_elements);
+		$this->Elements($this->__elements);
 	}
 
 	/**
 	 * Affiche directement la partie avec ses arguments
-	 * @param array $elements Eléments à afficher dans la liste
+	 * @param array $elementList Eléments à afficher dans la liste
 	 */
-	public function Elements(array $elements) : void{
-		$this->AddPart($this->_filePart, $elements);
+	public function Elements(array $elementList) : void{
+		$this->Fill($elementList);
+		extract($this->GetThisAttributes());
+		$this->AddPart($this->_filePart, compact('elements'));
+	}
+
+	/**
+	 * @return array Retourne la liste des propriétés de l'objet
+	 */
+	protected function GetInternalAttributes() : array{
+		return get_object_vars($this);
 	}
 }
