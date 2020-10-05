@@ -122,4 +122,25 @@ class Table
 
 		return $result->execute($data);
 	}
+
+	/**
+     * Permet de mettre à jour les données selon l'ID
+     * A vérifier /!\
+     */
+	/*public function Update(BaseModel $model, $id, $array) : bool
+    {
+        $data = get_object_vars($model);
+        $fields = array_keys($data);
+
+        $req = "UPDATE {$this->_table} SET ";
+        foreach ($array as $val)
+        {
+            $req= $req."{$fields}={$val}";
+        }
+        $req = $req."WHERE id={$id}";
+
+        $result = $this->_database->prepare($req);
+
+        return $result->execute();
+    }*/
 }
