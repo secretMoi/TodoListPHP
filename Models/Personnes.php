@@ -8,5 +8,5 @@ class Personnes extends BaseModel
     public $Prenom;
     public $AdresseMail;
     public $MotDePasse;
-    public $Status;
+    public $Role;
 }

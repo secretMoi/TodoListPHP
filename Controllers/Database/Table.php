@@ -42,7 +42,7 @@ class Table
 	 */
 	public function __construct1(string $table)
 	{
-		$this->__construct(Application::Instance()->Connection(), $table);
+		$this->__construct2(Application::Instance()->Connection(), $table);
 	}
 
 	/**
@@ -59,8 +59,8 @@ class Table
 	 * @return BaseModel Retourne un model
 	 */
 	public function Select(int $id) : ?BaseModel{
-		$req = "SELECT * FROM {$this->_table} WHERE ID={$id}";
-		$result = $this->_database->query($req);
+		$req = "SELECT * FROM {$this->_table} WHERE ID={$id}"; // req sql
+		$result = $this->_database->query($req); // exécute la req
 		$result = $result->fetch(PDO::FETCH_ASSOC);
 
 		if(!$result)

@@ -14,12 +14,13 @@ use PDO;
  */
 class Application
 {
-	public $title = "ToutDoux";
+	public $title = "La todo à gougoune";
 
 	private $_database; // stocke la database
 	private static $Instance; // instance de App comme singleton
 
 	private $_css = "Views/css/bootstrap-slate.css";
+	private $_menu = "Views/Parts/navbar.php";
 
 	private function __construct()
 	{
@@ -54,9 +55,16 @@ class Application
 	}
 
 	/**
-	 * @return string Retourne la chemin du fichier CSS à utiliser pour les vues
+	 * @return string Retourne le chemin du fichier CSS à utiliser pour les vues
 	 */
 	public function GetCss() : string{
 		return str_replace('\\', '/', $this->_css);
+	}
+
+	/**
+	 * @return string Retourne le chemin du fichier de menu à afficher
+	 */
+	public function GetMenu() : string{
+		return $this->_menu;
 	}
 }

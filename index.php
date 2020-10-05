@@ -40,7 +40,7 @@ $test = new RequestBuilder();
 $test->Select("*")
 	->Selects(array("nom", "prenom"))
 	->From("Personnes");
-var_dump($test);
+//var_dump($test);
 
 //$todoTable->Insert($todoModel);
 //$gererTable->Insert($gerer);

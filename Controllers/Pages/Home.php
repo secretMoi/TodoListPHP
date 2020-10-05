@@ -9,7 +9,7 @@ class Home extends BaseController
 		$this->Render("home", compact($coucou));
 	}
 
-	public function Test(){
+	public function Homes(){
 		$this->Render("homes");
 	}
 }
