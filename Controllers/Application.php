@@ -20,7 +20,8 @@ class Application
 	private static $Instance; // instance de App comme singleton
 
 	private $_css = "Views/css/bootstrap-slate.css";
-	private $_menu = "Views/Parts/navbar.php";
+	public $Menu = "Views/Parts/menu.php";
+	public $Navbar = "Views/Parts/navbar.php";
 
 	private function __construct()
 	{
@@ -61,10 +62,4 @@ class Application
 		return str_replace('\\', '/', $this->_css);
 	}
 
-	/**
-	 * @return string Retourne le chemin du fichier de menu à afficher
-	 */
-	public function GetMenu() : string{
-		return $this->_menu;
-	}
 }

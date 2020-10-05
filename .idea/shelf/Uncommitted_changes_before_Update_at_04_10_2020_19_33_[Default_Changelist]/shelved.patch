@@ -1,0 +1,18 @@
+Index: Controllers/Database/Database.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nnamespace Controllers\\Database;\r\n\r\nclass Database\r\n{\r\n\tprivate $host = \"localhost\";\r\n\tprivate $port = \"3306\";\r\n\tprivate $name = \"todo\";\r\n\tprivate $user = \"root\";\r\n\tprivate $password = \"\";\r\n\r\n\tprivate $pdo;\r\n\r\n\tpublic function __construct()\r\n\t{\r\n\t\t$this->pdo = new \\PDO(\"mysql:host={$this->host};dbname={$this->name};port={$this->port}\",$this->user,$this->password);\r\n\t}\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Controllers/Database/Database.php	(revision a6a46f33e2a19ddef8a3ed8fe1c8e0f10eddccbd)
++++ Controllers/Database/Database.php	(date 1601653601898)
+@@ -8,7 +8,7 @@
+ 	private $port = "3306";
+ 	private $name = "todo";
+ 	private $user = "root";
+-	private $password = "";
++	private $password = "Cedrus@2604";
+ 
+ 	private $pdo;
+ 

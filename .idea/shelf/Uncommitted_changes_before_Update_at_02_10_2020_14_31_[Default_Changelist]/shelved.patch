@@ -1,0 +1,14 @@
+Index: index.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- index.php	(revision 036ec0f6130cc4ca59df7ec3cfb6dee1d60ae71a)
++++ index.php	(date 1601639073010)
+@@ -1,1 +1,3 @@
+ <?php
++echo "Hello world";
++?>
+\ No newline at end of file

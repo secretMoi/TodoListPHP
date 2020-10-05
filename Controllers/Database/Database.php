@@ -10,7 +10,7 @@ class Database
 	private $port = "3306";
 	private $name = "todo";
 	private $user = "root";
-	private $password = "";
+	private $password = "Cedrus@2604";
 
 	private $pdo;
 

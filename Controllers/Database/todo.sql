@@ -1,3 +1,4 @@
+
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
@@ -35,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `gerer` (
   PRIMARY KEY (`ID`),
   KEY `IDPers` (`IDPers`),
   KEY `IDTodo` (`IDTodo`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `gerer`
@@ -68,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `personnes` (
   `Role` int DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `Status` (`Role`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `personnes`
@@ -93,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `Nom` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `role`
@@ -115,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `status` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `Nom` varchar(20) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `status`
@@ -142,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `todo` (
   `Status` int DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `Status` (`Status`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `todo`
