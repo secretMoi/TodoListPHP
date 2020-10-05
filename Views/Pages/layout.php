@@ -16,6 +16,8 @@ use Controllers\Application;
 
 <body>
 
+<?php require_once Application::Instance()->GetMenu(); ?>
+
 <?= $content; ?>
 
 </body>
