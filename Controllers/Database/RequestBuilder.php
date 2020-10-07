@@ -8,12 +8,12 @@ class RequestBuilder
 {
 	private $request = "";
 
-	public function Select(string $fields){
+	/*public function Select(string $fields){
 		$this->Add("SELECT " . $fields);
 		return $this;
-	}
+	}*/
 
-	public function Selects(array $fields){
+	public function Select(array $fields){
 		$this->Add("SELECT (" . implode(', ', $fields) . ')');
 		return $this;
 	}
