@@ -1,7 +1,11 @@
 <?php
 
-use Controllers\Pages\Parts\Boxes\FinishedBox;
-use Controllers\Pages\Parts\ListDropDown;
+/**
+ * @var $coucou
+ */
+
+use Controllers\Parts\Boxes\FinishedBox;
+use Controllers\Parts\ListDropDown;
 
 ?>
 

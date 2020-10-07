@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a5221fb7-2d81-4f0f-9983-8636188de145" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Application.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Pages/Login/log.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Pages/Login/log.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Pages/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Pages/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Pages/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Pages/layout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Parts/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Parts/navbar.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602081543849</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Add documentation&#10;Remove var_dump">
+      <created>1602081704389</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1602081704389</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +248,8 @@
     <MESSAGE value="Ajout de DropDownList.php" />
     <MESSAGE value="Ajout de FinishedBox.php&#10;Ajout du système de parts modulaire&#10;Simplification appel css" />
     <MESSAGE value="Dynamic Router.php&#10;Refactor Parts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dynamic Router.php&#10;Refactor Parts" />
+    <MESSAGE value="Add documentation&#10;Remove var_dump" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add documentation&#10;Remove var_dump" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1035" y="520" key="#Notifications" timestamp="1601672740360">
@@ -255,10 +268,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1071" y="375" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1601658881896" />
-    <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2" timestamp="1602081543374">
+    <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2" timestamp="1602081704072">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1602081543374" />
+    <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1602081704072" />
     <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog" timestamp="1601915684748">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -279,10 +292,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="345" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1601646315979" />
-    <state x="872" y="429" key="Vcs.Push.Dialog.v2" timestamp="1602081545488">
+    <state x="872" y="429" key="Vcs.Push.Dialog.v2" timestamp="1602081706176">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="872" y="429" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1602081545488" />
+    <state x="872" y="429" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1602081706176" />
     <state x="1098" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602079506405">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -295,10 +308,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1042" y="486" key="git4idea.ui.GitUnstashDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1601653305845" />
-    <state x="943" y="315" key="search.everywhere.popup" timestamp="1601651253614">
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1602086763454">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="943" y="315" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1601651253614" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1602086763454" />
     <state x="681" y="437" key="vcs.ApplyPatchDifferentiatedDialog" timestamp="1601912901142">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
