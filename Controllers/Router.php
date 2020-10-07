@@ -16,7 +16,7 @@ class Router
 	private $_controller;
 	private $_action;
 
-	private static $Files;
+	private static $Files = null;
 
 	public function __construct()
 	{
@@ -24,11 +24,19 @@ class Router
 		$this->LoadClasses();
 	}
 
+	/**
+	 * Charge toutes les classes des contrôleurs de page
+	 */
 	private function LoadClasses(){
-		// Construct the iterator
-		self::$Files = new RecursiveDirectoryIterator(ROOT . 'Controllers/Pages/');
+		if(self::$Files == null)
+			self::$Files = new RecursiveDirectoryIterator(ROOT . 'Controllers/Pages/');
 	}
 
+	/**
+	 * Trouve le namespace complet d'un controleur selon le nom de la classe
+	 * @param string $className Nom de la classe à trouver
+	 * @return string Namespace complet de la classe
+	 */
 	private function FindClass(string $className) : string {
 		$res = null;
 
@@ -39,7 +47,6 @@ class Router
 				$res = strstr($res, '/Controllers'); // supprime ce qui est avant /Controllers
 				$res = str_replace('/', '\\', $res); // converti les / en \
 				$res = strstr($res, '.php', true); // supprime l'extension
-				var_dump($res);
 			}
 		}
 
@@ -91,11 +98,7 @@ class Router
 	 * @return string Retourne le namespace complet du controleur
 	 */
 	private function FormatController(string $controller) : string{
-		/*$this->FindClass($controller);
-
-		return '\Controllers\Pages\\' . ucfirst($controller); // génère le nom et le namespace du controleur à appeler*/
-
-		return $this->FindClass($controller);
+		return $this->FindClass(ucfirst($controller));
 	}
 
 	/**
