@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Controllers\Pages\Parts\Boxes;
+namespace Controllers\Parts\Boxes;
 
 
 class UrgentBox extends BaseBox

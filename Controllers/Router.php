@@ -4,6 +4,9 @@
 namespace Controllers;
 
 
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+
 class Router
 {
 	private $_delimiter = '/'; // délimiteur séparant le controleur de l'action dans l'url
@@ -13,9 +16,34 @@ class Router
 	private $_controller;
 	private $_action;
 
+	private static $Files;
+
 	public function __construct()
 	{
 		$this->_defaultPage = "Home{$this->_delimiter}Home";
+		$this->LoadClasses();
+	}
+
+	private function LoadClasses(){
+		// Construct the iterator
+		self::$Files = new RecursiveDirectoryIterator(ROOT . 'Controllers/Pages/');
+	}
+
+	private function FindClass(string $className) : string {
+		$res = null;
+
+		// Loop through files
+		foreach(new RecursiveIteratorIterator(self::$Files) as $file) {
+			if ($file->getExtension() == 'php' && strpos($file, $className) !== false) {
+				$res = (string) $file;
+				$res = strstr($res, '/Controllers'); // supprime ce qui est avant /Controllers
+				$res = str_replace('/', '\\', $res); // converti les / en \
+				$res = strstr($res, '.php', true); // supprime l'extension
+				var_dump($res);
+			}
+		}
+
+		return $res;
 	}
 
 	/**
@@ -63,7 +91,11 @@ class Router
 	 * @return string Retourne le namespace complet du controleur
 	 */
 	private function FormatController(string $controller) : string{
-		return '\Controllers\Pages\\' . ucfirst($controller); // génère le nom et le namespace du controleur à appeler
+		/*$this->FindClass($controller);
+
+		return '\Controllers\Pages\\' . ucfirst($controller); // génère le nom et le namespace du controleur à appeler*/
+
+		return $this->FindClass($controller);
 	}
 
 	/**

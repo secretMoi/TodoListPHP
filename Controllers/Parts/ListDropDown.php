@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers\Pages\Parts;
+namespace Controllers\Parts;
 
 class ListDropDown extends BaseParts
 {

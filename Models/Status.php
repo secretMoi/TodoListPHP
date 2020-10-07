@@ -4,7 +4,7 @@
 namespace Models;
 
 
-class Status
+class Status extends BaseModel
 {
 	public $ID;
 	public $Nom;

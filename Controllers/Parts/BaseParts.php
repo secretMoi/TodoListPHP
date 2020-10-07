@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Controllers\Pages\Parts;
+namespace Controllers\Parts;
 
 
 use Controllers\Pages\BaseController;

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Controllers\Pages\Parts\Boxes;
+namespace Controllers\Parts\Boxes;
 
 
-use Controllers\Pages\Parts\BaseParts;
+use Controllers\Parts\BaseParts;
 
 class BaseBox extends BaseParts
 {

@@ -1,6 +1,8 @@
 <?php
 
-namespace Controllers\Pages;
+namespace Controllers\Pages\Login;
+
+use Controllers\Pages\BaseController;
 
 class SignIn extends BaseController
 {

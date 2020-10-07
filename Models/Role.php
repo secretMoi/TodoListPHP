@@ -1,7 +1,7 @@
 <?php
 namespace Models;
 
-class Status extends BaseModel
+class Role extends BaseModel
 {
     public $ID;
     public $Nom;

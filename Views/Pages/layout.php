@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @var string $content Contenu du corps de la page
+ */
+
 use Controllers\Application;
 
 ?>
