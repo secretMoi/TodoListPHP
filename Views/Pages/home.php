@@ -1,7 +1,8 @@
 <?php
+/** @var $coucou*/
 
-use Controllers\Pages\Parts\Boxes\FinishedBox;
-use Controllers\Pages\Parts\ListDropDown;
+use Controllers\Parts\Boxes\FinishedBox;
+use Controllers\Parts\ListDropDown;
 
 ?>
 
@@ -10,5 +11,3 @@ use Controllers\Pages\Parts\ListDropDown;
 <?php (new ListDropDown())->Elements(array("a" => "b")); ?>
 
 <?php (new FinishedBox("a", "b", "c"))->Display(); ?>
-
-

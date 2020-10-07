@@ -8,6 +8,6 @@ class SignIn extends BaseController
 {
     public function Log()
     {
-        $this->Render("Login\log");
+        $this->RenderSimple("Login\log");
     }
 }

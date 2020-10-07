@@ -71,6 +71,10 @@ body {
     background-color: #272b30;
 }
 
+.form-signin{
+    width: 30rem;
+}
+
 [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important;
 }
