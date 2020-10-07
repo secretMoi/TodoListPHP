@@ -53,6 +53,33 @@ class RequestExecuter
 		return substr(strrchr($namespace, '\\'), 1);
 	}
 
+	public function Execute(string $req){
+
+		if (strpos($req, 'SELECT') === 0)
+			return $this->ExecuteSelect($req);
+
+		return null;
+	}
+
+	public function ExecuteSelect(string $req){
+		$result = $this->_database->query($req); // exécute la req
+		$result = $result->fetchAll(PDO::FETCH_ASSOC);
+
+		if(!$result)
+			return null;
+
+		$models = array();
+
+		foreach ($result as $record){
+			$model = HandleModel::LoadModel($this->_table);
+			$model->Hydrate($record);
+
+			array_push($models, $model);
+		}
+
+		return $models;
+	}
+
 	/**
 	 * Permet d'exécuter une requête SQL SELECT sur un ID particulier
 	 * @param int $id id de l'enregistrement à récupérer
