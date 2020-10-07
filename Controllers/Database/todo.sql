@@ -1,14 +1,14 @@
-
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Oct 05, 2020 at 02:50 PM
--- Server version: 8.0.21
--- PHP Version: 7.3.21
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mer. 07 oct. 2020 à 06:40
+-- Version du serveur :  5.7.26
+-- Version de PHP :  7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,85 +19,75 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `todo`
+-- Base de données :  `todo`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gerer`
+-- Structure de la table `gerer`
 --
 
 DROP TABLE IF EXISTS `gerer`;
 CREATE TABLE IF NOT EXISTS `gerer` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `IDPers` int DEFAULT NULL,
-  `IDTodo` int DEFAULT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `IDPers` int(11) DEFAULT NULL,
+  `IDTodo` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `IDPers` (`IDPers`),
   KEY `IDTodo` (`IDTodo`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `gerer`
+-- Déchargement des données de la table `gerer`
 --
 
 INSERT INTO `gerer` (`ID`, `IDPers`, `IDTodo`) VALUES
-(1, 7, 1),
-(2, 7, 1),
-(3, 7, 1),
-(4, 7, 1),
-(5, 7, 1),
-(6, 7, 1),
-(7, 7, 1),
-(8, 7, 1),
-(15, 7, 1);
+(16, 9, 2),
+(17, 8, 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personnes`
+-- Structure de la table `personnes`
 --
 
 DROP TABLE IF EXISTS `personnes`;
 CREATE TABLE IF NOT EXISTS `personnes` (
-  `ID` int NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Nom` varchar(30) DEFAULT NULL,
   `Prenom` varchar(30) DEFAULT NULL,
   `AdresseMail` varchar(100) DEFAULT NULL,
   `MotDePasse` char(64) DEFAULT NULL,
-  `Role` int DEFAULT NULL,
+  `Role` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
+  UNIQUE KEY `AdresseMail` (`AdresseMail`),
   KEY `Status` (`Role`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `personnes`
+-- Déchargement des données de la table `personnes`
 --
 
 INSERT INTO `personnes` (`ID`, `Nom`, `Prenom`, `AdresseMail`, `MotDePasse`, `Role`) VALUES
-(1, ':Nom', ':Prenom', NULL, NULL, NULL),
-(3, 'a', 'az', NULL, NULL, NULL),
-(4, 'a', 'az', NULL, NULL, NULL),
-(5, 'a', 'az', NULL, NULL, NULL),
-(6, 'a', 'az', NULL, NULL, NULL),
-(7, 'a', 'az', NULL, NULL, NULL);
+(8, 'dams', 'seb', 'coucou', '110812f67fa1e1f0117f6f3d70241c1a42a7b07711a93c2477cc516d9042f9db', 1),
+(9, 'bol', 'quent', 'tyty', '110812f67fa1e1f0117f6f3d70241c1a42a7b07711a93c2477cc516d9042f9db', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Structure de la table `role`
 --
 
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE IF NOT EXISTS `role` (
-  `ID` int NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Nom` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `role`
+-- Déchargement des données de la table `role`
 --
 
 INSERT INTO `role` (`ID`, `Nom`) VALUES
@@ -108,18 +98,18 @@ INSERT INTO `role` (`ID`, `Nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status`
+-- Structure de la table `status`
 --
 
 DROP TABLE IF EXISTS `status`;
 CREATE TABLE IF NOT EXISTS `status` (
-  `ID` int NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Nom` varchar(20) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `status`
+-- Déchargement des données de la table `status`
 --
 
 INSERT INTO `status` (`ID`, `Nom`) VALUES
@@ -130,50 +120,51 @@ INSERT INTO `status` (`ID`, `Nom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `todo`
+-- Structure de la table `todo`
 --
 
 DROP TABLE IF EXISTS `todo`;
 CREATE TABLE IF NOT EXISTS `todo` (
-  `ID` int NOT NULL AUTO_INCREMENT,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Titre` varchar(30) DEFAULT NULL,
   `DateCreation` datetime DEFAULT NULL,
   `DateModif` datetime DEFAULT NULL,
   `Contenu` varchar(100) DEFAULT NULL,
-  `Status` int DEFAULT NULL,
+  `Status` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `Status` (`Status`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `todo`
+-- Déchargement des données de la table `todo`
 --
 
 INSERT INTO `todo` (`ID`, `Titre`, `DateCreation`, `DateModif`, `Contenu`, `Status`) VALUES
-(1, 'a', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'z', 1);
+(2, 'a', '2020-10-07 00:00:00', '2020-10-08 00:00:00', 'blabla', 2),
+(3, 'b', '2020-10-01 00:00:00', '2020-10-03 00:00:00', 'grgr', 1);
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `gerer`
+-- Contraintes pour la table `gerer`
 --
 ALTER TABLE `gerer`
   ADD CONSTRAINT `gerer_ibfk_1` FOREIGN KEY (`IDPers`) REFERENCES `personnes` (`ID`),
   ADD CONSTRAINT `gerer_ibfk_2` FOREIGN KEY (`IDTodo`) REFERENCES `todo` (`ID`);
 
 --
--- Constraints for table `personnes`
+-- Contraintes pour la table `personnes`
 --
 ALTER TABLE `personnes`
   ADD CONSTRAINT `personnes_ibfk_1` FOREIGN KEY (`Role`) REFERENCES `role` (`ID`);
 
 --
--- Constraints for table `todo`
+-- Contraintes pour la table `todo`
 --
 ALTER TABLE `todo`
-  ADD CONSTRAINT `todo_ibfk_1` FOREIGN KEY (`Status`) REFERENCES `status` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  ADD CONSTRAINT `todo_ibfk_1` FOREIGN KEY (`Status`) REFERENCES `status` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
