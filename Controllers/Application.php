@@ -54,4 +54,9 @@ class Application
 	public function Connection() : PDO{
 		return $this->_database->GetConnection();
 	}
+
+	public function Link(?string $controller, ?string $action) : string{
+		$router = new Router();
+		return $router->Link("index.php", $controller, $action);
+	}
 }

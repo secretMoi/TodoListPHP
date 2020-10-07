@@ -20,8 +20,9 @@ use Controllers\Application;
 
 <body>
 
-<?php   require_once Application::Instance()->Navbar;
-        require_once Application::Instance()->Menu;
+<?php
+require_once Application::Instance()->Navbar;
+require_once Application::Instance()->Menu;
 ?>
 
 <?= $content; ?>

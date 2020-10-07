@@ -24,6 +24,13 @@ class Router
 		$this->LoadClasses();
 	}
 
+	public function Link(string $prefix, ?string $controller, ?string $action) : string{
+		if($controller == null || $action == null)
+			return "{$prefix}";
+		else
+			return "{$prefix}?{$this->_pageGetter}={$controller}{$this->_delimiter}{$action}";
+	}
+
 	/**
 	 * Charge toutes les classes des contrôleurs de page
 	 */

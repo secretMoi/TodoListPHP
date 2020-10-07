@@ -8,14 +8,18 @@ class RequestBuilder
 {
 	private $request = "";
 
-	/*public function Select(string $fields){
-		$this->Add("SELECT " . $fields);
-		return $this;
-	}*/
-
-	public function Select(array $fields){
+	public function Select(){
+		$fields = func_get_args();
 		$this->Add("SELECT (" . implode(', ', $fields) . ')');
 		return $this;
+	}
+
+	public function Where(string $field, int $id){
+		$this->Add("WHERE {$field} = {$id}");
+	}
+
+	public function WhereId(int $id){
+		$this->Where("ID", $id);
 	}
 
 	public function From(string $table){
