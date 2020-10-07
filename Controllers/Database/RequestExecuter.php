@@ -7,7 +7,7 @@ use Controllers\HandleModel;
 use Models\BaseModel;
 use PDO;
 
-class Table
+class RequestExecuter
 {
 	private $_database;
 	private $_table;

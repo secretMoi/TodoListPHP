@@ -14,7 +14,7 @@ use PDO;
  */
 class Application
 {
-	public $title = "La todo à gougoune";
+	public $title = "ToutDoux";
 
 	private $_database; // stocke la database
 	private static $Instance; // instance de App comme singleton

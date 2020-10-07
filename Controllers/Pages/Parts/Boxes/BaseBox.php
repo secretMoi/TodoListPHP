@@ -1,13 +1,17 @@
 <?php
 
-namespace Controllers\Pages\Parts;
 
-class FinishedBox extends BaseParts
+namespace Controllers\Pages\Parts\Boxes;
+
+
+use Controllers\Pages\Parts\BaseParts;
+
+class BaseBox extends BaseParts
 {
-	private $_filePart = "Boxes/Finished"; // fichier de vue à afficher
-	private $__header; // données à afficher
-	private $__title; // données à afficher
-	private $__content; // données à afficher
+	protected $_filePart = ""; // fichier de vue à afficher
+	protected $__header; // données à afficher
+	protected $__title; // données à afficher
+	protected $__content; // données à afficher
 
 	/**
 	 * @param string $header Header à placer dans la FinishedBox
