@@ -1,9 +1,14 @@
+<?php
+
+use Controllers\Pages\Parts\FinishedBox;
+use Controllers\Pages\Parts\ListDropDown;
+
+?>
+
 <?= $coucou; ?><br>
-<div class="btn-group-vertical">
-    <button type="button" class="btn btn-primary">Button</button>
-    <button type="button" class="btn btn-primary">Button</button>
-    <button type="button" class="btn btn-primary">Button</button>
-    <button type="button" class="btn btn-primary">Button</button>
-    <button type="button" class="btn btn-primary">Button</button>
-    <button type="button" class="btn btn-primary">Button</button>
-</div>
+
+<?php (new ListDropDown())->Elements(array("a" => "b")); ?>
+
+<?php (new FinishedBox("a", "b", "c"))->Display(); ?>
+
+

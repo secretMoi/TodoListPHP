@@ -14,12 +14,14 @@ use PDO;
  */
 class Application
 {
-	public $title = "ToutDoux";
+	public $title = "La todo à gougoune";
 
 	private $_database; // stocke la database
 	private static $Instance; // instance de App comme singleton
 
-	private $_css = "Views/css/bootstrap-slate.css";
+	public $Css = "Views/css/bootstrap-slate.css";
+	public $Menu = "Views/Parts/menu.php";
+	public $Navbar = "Views/Parts/navbar.php";
 
 	private function __construct()
 	{
@@ -51,12 +53,5 @@ class Application
 	 */
 	public function Connection() : PDO{
 		return $this->_database->GetConnection();
-	}
-
-	/**
-	 * @return string Retourne la chemin du fichier CSS à utiliser pour les vues
-	 */
-	public function GetCss() : string{
-		return str_replace('\\', '/', $this->_css);
 	}
 }

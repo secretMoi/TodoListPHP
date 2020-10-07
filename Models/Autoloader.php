@@ -11,10 +11,8 @@ class Autoloader {
 
 	static function autoload($className)
 	{
-
 		if(strpos($className, __NAMESPACE__ . '\\') === 0)
 		{ // N'autoloader que ce qui est dans le namespace Tutoriel, propre namespace
-
 			$className = str_replace(__NAMESPACE__ . '\\', '', $className);
 			$className = str_replace('\\', '/', $className);
 
