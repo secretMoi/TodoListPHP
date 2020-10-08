@@ -80,6 +80,14 @@ class RequestExecuter
 		return $models;
 	}
 
+	public function ExecuteUpdate(string $req, BaseModel $model){
+		$result = $this->_database->prepare($req);
+
+		var_dump($result);
+
+		return $result->execute($this->Model2Array($model));
+	}
+
 	/**
 	 * Permet d'exécuter une requête SQL SELECT sur un ID particulier
 	 * @param int $id id de l'enregistrement à récupérer
@@ -151,23 +159,43 @@ class RequestExecuter
 	}
 
 	/**
-     * Permet de mettre à jour les données selon l'ID
-     * A vérifier /!\
-     */
-	/*public function Update(BaseModel $model, $id, $array) : bool
-    {
-        $data = get_object_vars($model);
-        $fields = array_keys($data);
+	 * Permet de mettre à jour les données selon l'ID
+	 * @param BaseModel $model
+	 * @return bool
+	 */
+	public function Update(BaseModel $model) : bool
+	{
+		$data = $this->Model2Array($model);
 
-        $req = "UPDATE {$this->_table} SET ";
-        foreach ($array as $val)
-        {
-            $req= $req."{$fields}={$val}";
-        }
-        $req = $req."WHERE id={$id}";
+		$fields = array_keys($data);
 
-        $result = $this->_database->prepare($req);
+		$req = "UPDATE {$this->_table} ";
+		$req .= "SET ";
 
-        return $result->execute();
-    }*/
+		foreach ($fields as $field)
+			$req .= $field . " = :" . $field . ', ';
+
+		$req = substr($req, 0, -2) . ' ';
+
+		$req .= "WHERE {$fields[0]} = {$data[$fields[0]]}";
+
+		$result = $this->_database->prepare($req);
+
+		return $result->execute($data);
+	}
+
+	private function Model2Array($model) : array{
+		$data = get_object_vars($model); // récupère les données du modèle
+
+		$index = 0;
+		foreach ($data as $key => $value)
+		{
+			if(is_null($value)) // si aucune valeur n'est settée
+				unset($data[$key]); // supprime les entrées vides des tableaux
+
+			$index++;
+		}
+
+		return $data;
+	}
 }

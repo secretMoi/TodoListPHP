@@ -34,15 +34,31 @@ class RequestBuilder
 	public function Insert(string $table, BaseModel $model){
 		$table = $this->CleanClassNameFromNamespace($table);
 		$data = $this->Model2Array($model);
+
 		$fields = array_keys($data);
-		var_dump($data);
-		var_dump($table);
 
 		$this->Add("INSERT INTO {$table}");
 		$this->Add("(" . implode(', ', $fields) . ")");
-		$this->Add("VALUES (:" . implode(', :', $data) . ")");
+		$this->Add("VALUES (:" . implode(', :', $fields) . ")");
 
-		var_dump($this->request);
+		return $this;
+	}
+
+	public function Update(string $table, BaseModel $model){
+		$table = $this->CleanClassNameFromNamespace($table);
+		$data = $this->Model2Array($model);
+
+		$fields = array_keys($data);
+
+		$this->Add("UPDATE {$table}");
+		$this->Add("SET");
+
+		foreach ($fields as $field)
+			$this->Add($field . " = :" . $field . ',');
+
+		$this->request = substr($this->request, 0, -2) . ' ';
+
+		return $this;
 	}
 
 	private function Add($request){
@@ -74,6 +90,12 @@ class RequestBuilder
 	 */
 	private function CleanClassNameFromNamespace(string $namespace) : string{
 		return substr(strrchr($namespace, '\\'), 1);
+	}
+
+	public function Reset(){
+		$this->request = "";
+
+		return $this;
 	}
 
 	public function __toString() {

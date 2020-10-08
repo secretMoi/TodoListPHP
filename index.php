@@ -18,11 +18,21 @@ $router->Route($_GET); // lui donne la page de l'url
 $req = new RequestBuilder();
 $req->Select("*")
 	->From(Personnes::class)
-	->WhereId(8);
+	->WhereId(9);
 
 $table = new RequestExecuter(Personnes::class);
 $res = $table->ExecuteSelect($req);
+$res = \Models\BaseModel::Cast($res[0], Personnes::class);
 
 $req = new RequestBuilder();
 
-$req->Insert(Personnes::class, $res[0]);
+$req->Insert(Personnes::class, $res);
+$req->Reset();
+$req->Update(Personnes::class, $res)
+	->WhereId(9);
+
+$res->Nom = "coucou";
+
+//var_dump($table->ExecuteUpdate($req, $res));
+
+var_dump($table->Update($res));
