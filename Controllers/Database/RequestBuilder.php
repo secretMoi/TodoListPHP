@@ -10,6 +10,10 @@ class RequestBuilder
 {
 	private $request = "";
 
+	/**
+	 * Construit une requête SELECT avec le nom des champs en arguments
+	 * @return $this
+	 */
 	public function Select(){
 		$fields = func_get_args();
 		//todo vérifier que les champs existent dans le model
@@ -17,14 +21,30 @@ class RequestBuilder
 		return $this;
 	}
 
+	/**
+	 * Construit une requête WHERE avec le nom du champ et sa valeur
+	 * @param string $field Nom du champ à rechercher
+	 * @param int $id Valeur du champ à rechercher
+	 * @return void
+	 */
 	public function Where(string $field, int $id){
 		$this->Add("WHERE {$field} = {$id}");
 	}
 
+	/**
+	 * Construit une requête WHERE sur le champ id et sa valeur
+	 * @param int $id Valeur de l'id à rechercher
+	 * @return void
+	 */
 	public function WhereId(int $id){
 		$this->Where("ID", $id);
 	}
 
+	/**
+	 * Ajoute la table à la requête
+	 * @param string $table Nom de la table sur laquelle travailler
+	 * @return $this
+	 */
 	public function From(string $table){
 		$table = $this->CleanClassNameFromNamespace($table);
 		$this->Add("FROM " . $table);

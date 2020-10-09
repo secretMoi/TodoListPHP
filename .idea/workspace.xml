@@ -4,8 +4,6 @@
     <list default="true" id="a5221fb7-2d81-4f0f-9983-8636188de145" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/Database/RequestBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Database/RequestBuilder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Database/RequestExecuter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Database/RequestExecuter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +65,8 @@
       <workItem from="1601672231421" duration="3038000" />
       <workItem from="1601827659850" duration="12781000" />
       <workItem from="1601903950854" duration="17453000" />
-      <workItem from="1602143016145" duration="5416000" />
+      <workItem from="1602143016145" duration="5722000" />
+      <workItem from="1602278123434" duration="325000" />
     </task>
     <task id="LOCAL-00001" summary="Add database">
       <created>1601646563157</created>
@@ -223,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602105248718</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Amélioration de RequestBuilder.php et de RequestExecuter.php">
+      <created>1602151095960</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1602151095960</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,7 +269,8 @@
     <MESSAGE value="Add documentation&#10;Remove var_dump" />
     <MESSAGE value="Add Link&#10;Centrage du formulaire de connexion&#10;Création de liens dans la navbar.php" />
     <MESSAGE value="Suite RequestBuilder.php&#10;Début d'exécution dans RequestExecuter.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="Suite RequestBuilder.php&#10;Début d'exécution dans RequestExecuter.php" />
+    <MESSAGE value="Amélioration de RequestBuilder.php et de RequestExecuter.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="Amélioration de RequestBuilder.php et de RequestExecuter.php" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1035" y="520" key="#Notifications" timestamp="1601672740360">
@@ -286,10 +293,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1602103831381" />
-    <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2" timestamp="1602105248354">
+    <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2" timestamp="1602151095538">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1602105248354" />
+    <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1602151095538" />
     <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog" timestamp="1601915684748">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -314,10 +321,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.2560.1400@0.0.2560.1400" timestamp="1602101556196" />
-    <state x="872" y="429" key="Vcs.Push.Dialog.v2" timestamp="1602105250253">
+    <state x="872" y="429" key="Vcs.Push.Dialog.v2" timestamp="1602151097385">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="872" y="429" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1602105250253" />
+    <state x="872" y="429" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1602151097385" />
     <state x="1098" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602079506405">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -330,6 +337,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1042" y="486" key="git4idea.ui.GitUnstashDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1601653305845" />
+    <state x="936" y="330" key="run.anything.popup" timestamp="1602150928620">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="936" y="330" key="run.anything.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1602150928620" />
     <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1602086763454">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
