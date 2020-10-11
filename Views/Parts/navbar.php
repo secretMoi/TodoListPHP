@@ -15,9 +15,9 @@ use Controllers\Application;
 			<li class="nav-item">
 				<a class="nav-link" href="<?= Application::Instance()->Link(null, null); ?>">Accueil <span class="sr-only">(current)</span></a>
 			</li>
-			<li class="nav-item">
+			<!--<li class="nav-item">
 				<a class="nav-link" href="<?= Application::Instance()->Link("SignIn", "Log"); ?>">Se connecter</a>
-			</li>
+			</li>-->
 			<li class="nav-item">
 				<a class="nav-link" href="#">Pricing</a>
 			</li>
@@ -25,5 +25,13 @@ use Controllers\Application;
 				<a class="nav-link" href="#">About</a>
 			</li>
 		</ul>
+        <div class="form-inline my-2 my-lg-0">
+            <!--<li class="nav-item">-->
+                <a class="nav-item nav-link" href="<?= Application::Instance()->Link("SignIn", "Log"); ?>">Se connecter</a>
+            <!--</li>
+            <li class="nav-item">-->
+                <a class="nav-item nav-link" href="<?= Application::Instance()->Link("Register", "Register"); ?>">S'inscrire</a>
+            <!--</li>-->
+        </div>
 	</div>
 </nav>

@@ -15,7 +15,7 @@ Application::Instance();
 $router = new Router(); // init le routeur
 $router->Route($_GET); // lui donne la page de l'url
 
-$req = new RequestBuilder();
+/*$req = new RequestBuilder();
 $req->Select("*")
 	->From(Personnes::class)
 	->WhereId(9);
@@ -33,6 +33,6 @@ $req->Update(Personnes::class, $res)
 
 $res->Nom = "coucou";
 
-//var_dump($table->ExecuteUpdate($req, $res));
+var_dump($table->ExecuteUpdate($req, $res));*/
 
-var_dump($table->Update($res));
+//var_dump($table->Update($res));
