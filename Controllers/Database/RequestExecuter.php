@@ -83,8 +83,6 @@ class RequestExecuter
 	public function ExecuteUpdate(string $req, BaseModel $model){
 		$result = $this->_database->prepare($req);
 
-		var_dump($result);
-
 		return $result->execute($this->Model2Array($model));
 	}
 

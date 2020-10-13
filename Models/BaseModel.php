@@ -45,4 +45,18 @@ class BaseModel
 			strstr(strstr(serialize($instance), '"'), ':')
 		));
 	}
+
+	/**
+	 * Convertit un tableau associatif en model
+	 * @param array $array Valeur à récupérer
+	 * @return $this Retourne l'objet hydraté
+	 */
+	public function Array2Model(array $array){
+		foreach ($array as $key => $value){ // parcourt le tableau
+			if(property_exists($this, $key)) // si la propriété dans l'objet existe
+				$this->$key = $value;
+		}
+
+		return $this;
+	}
 }

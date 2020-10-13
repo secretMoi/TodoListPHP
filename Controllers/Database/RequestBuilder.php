@@ -24,11 +24,12 @@ class RequestBuilder
 	/**
 	 * Construit une requête WHERE avec le nom du champ et sa valeur
 	 * @param string $field Nom du champ à rechercher
-	 * @param int $id Valeur du champ à rechercher
+	 * @param string $value Valeur du champ à rechercher
 	 * @return void
 	 */
-	public function Where(string $field, int $id){
-		$this->Add("WHERE {$field} = {$id}");
+	public function Where(string $field, string $value){
+		$value = "'" . $value . "'";
+		$this->Add("WHERE {$field} = {$value}");
 	}
 
 	/**
