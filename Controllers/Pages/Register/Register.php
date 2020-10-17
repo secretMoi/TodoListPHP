@@ -47,5 +47,11 @@ class Register extends BaseController
 	    // ajout le model dans la bd
 	    $personneTable = new RequestExecuter(Personnes::class);
 		$result = $personneTable->Insert($personne);
+
+		if($result)
+        {
+            $host = $_SERVER['HTTP_HOST'];
+            header("Location: http://$host/Todo");
+        }
     }
 }

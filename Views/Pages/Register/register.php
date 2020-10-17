@@ -21,11 +21,11 @@ use Controllers\Application;
     </div>
     <div class="form-group">
         <label class="col-form-label col-form-label-lg" for="inputLarge">Mot de passe :</label>
-        <input name="MotDePasse" class="form-control form-control-lg" type="text" placeholder="Mot de passe" id="inputLarge">
+        <input name="MotDePasse" class="form-control form-control-lg" type="password" placeholder="Mot de passe" id="inputLarge">
     </div>
     <div class="form-group">
         <label class="col-form-label col-form-label-lg" for="inputLarge">Confirmer mot de passe :</label>
-        <input name="conf_MotDePasse" class="form-control form-control-lg" type="text" placeholder="Confirmer" id="inputLarge">
+        <input name="conf_MotDePasse" class="form-control form-control-lg" type="password" placeholder="Confirmer" id="inputLarge">
     </div>
     <button type="submit" class="btn btn-primary" name="register" style="margin: 20px auto;">S'inscrire</button>
 </form>

@@ -27,7 +27,18 @@ use Controllers\Application;
 		</ul>
         <div class="form-inline my-2 my-lg-0">
             <!--<li class="nav-item">-->
-                <a class="nav-item nav-link" href="<?= Application::Instance()->Link("SignIn", "Log"); ?>">Se connecter</a>
+            <?php
+                $link1 = Application::Instance()->Link("SignIn", "Log");
+                $link2 = Application::Instance()->Link("SignIn", "Deco");
+                if (empty($_SESSION))
+                {
+                    echo '<a class="nav-item nav-link" href="'. $link1 .'">Se connecter</a>';
+                }
+                else
+                {
+                    echo '<a class="nav-item nav-link" href="'. $link2 .'">Se déconnecter</a>';
+                }
+            ?>
             <!--</li>
             <li class="nav-item">-->
                 <a class="nav-item nav-link" href="<?= Application::Instance()->Link("Register", "Register"); ?>">S'inscrire</a>
