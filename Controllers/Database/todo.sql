@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 07 oct. 2020 à 06:40
+-- Généré le :  sam. 17 oct. 2020 à 18:27
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.3.5
 
@@ -36,15 +36,22 @@ CREATE TABLE IF NOT EXISTS `gerer` (
   PRIMARY KEY (`ID`),
   KEY `IDPers` (`IDPers`),
   KEY `IDTodo` (`IDTodo`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `gerer`
 --
 
 INSERT INTO `gerer` (`ID`, `IDPers`, `IDTodo`) VALUES
-(16, 9, 2),
-(17, 8, 3);
+(1, 7, 1),
+(2, 7, 1),
+(3, 7, 1),
+(4, 7, 1),
+(5, 7, 1),
+(6, 7, 1),
+(7, 7, 1),
+(8, 7, 1),
+(15, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -61,17 +68,24 @@ CREATE TABLE IF NOT EXISTS `personnes` (
   `MotDePasse` char(64) DEFAULT NULL,
   `Role` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `AdresseMail` (`AdresseMail`),
   KEY `Status` (`Role`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `personnes`
 --
 
 INSERT INTO `personnes` (`ID`, `Nom`, `Prenom`, `AdresseMail`, `MotDePasse`, `Role`) VALUES
-(8, 'dams', 'seb', 'coucou', '110812f67fa1e1f0117f6f3d70241c1a42a7b07711a93c2477cc516d9042f9db', 1),
-(9, 'bol', 'quent', 'tyty', '110812f67fa1e1f0117f6f3d70241c1a42a7b07711a93c2477cc516d9042f9db', 1);
+(1, ':Nom', ':Prenom', NULL, NULL, NULL),
+(3, 'a', 'az', NULL, NULL, NULL),
+(4, 'a', 'az', NULL, NULL, NULL),
+(5, 'a', 'az', NULL, NULL, NULL),
+(6, 'a', 'az', NULL, NULL, NULL),
+(7, 'a', 'az', NULL, NULL, NULL),
+(8, 'Damsin', 'SÃ©bastien', 'sebastien.damsin@gmail.com', 'c17ba3d5612012c16e80303eeba85f27494a9832660dd595db60184360267308', 2),
+(9, 'Struys', 'Magali', 'magali@mail.be', 'e44b718114d335340b3224d4f73f9a1313d480b2b6cb75630b81eef6241cf6dc', 2),
+(10, 'Liege', 'Philippe', 'phil@mail.be', 'f50f9b89c88ec82d836191fd523bdd9aba94fb51c92e2013cb6e9910f5ea47c4', 2),
+(11, 'test', 'test', 'test@mail.be', '1b4f0e9851971998e732078544c96b36c3d01cedf7caa332359d6f1d83567014', 2);
 
 -- --------------------------------------------------------
 
@@ -133,15 +147,15 @@ CREATE TABLE IF NOT EXISTS `todo` (
   `Status` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `Status` (`Status`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `todo`
 --
 
 INSERT INTO `todo` (`ID`, `Titre`, `DateCreation`, `DateModif`, `Contenu`, `Status`) VALUES
-(2, 'a', '2020-10-07 00:00:00', '2020-10-08 00:00:00', 'blabla', 2),
-(3, 'b', '2020-10-01 00:00:00', '2020-10-03 00:00:00', 'grgr', 1);
+(1, 'a', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'z', 1),
+(2, 'Pour Quentin', '2020-10-17 18:23:53', '2020-10-17 18:23:53', 'Jouer avec Goku', 2);
 
 --
 -- Contraintes pour les tables déchargées
