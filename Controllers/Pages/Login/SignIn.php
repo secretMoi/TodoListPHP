@@ -63,9 +63,6 @@ class SignIn extends BaseController
         $personneTable = new RequestExecuter(Personnes::class);
         $personneResult = $personneTable->Execute($personneRequest)[0];
 
-        var_dump($personneResult);
-        var_dump($personne);
-
         if ($personneResult->MotDePasse == $personne->MotDePasse)
         {
             /* on est bien connecté */

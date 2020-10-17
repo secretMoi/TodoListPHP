@@ -15,34 +15,30 @@ use Controllers\Application;
 			<li class="nav-item">
 				<a class="nav-link" href="<?= Application::Instance()->Link(null, null); ?>">Accueil <span class="sr-only">(current)</span></a>
 			</li>
-			<!--<li class="nav-item">
-				<a class="nav-link" href="<?= Application::Instance()->Link("SignIn", "Log"); ?>">Se connecter</a>
-			</li>-->
-			<li class="nav-item">
-				<a class="nav-link" href="#">Pricing</a>
-			</li>
+            <?php
+                if (!empty($_SESSION))
+                {
+                    echo '<li class="nav-item"><a class="nav-link" href="'. Application::Instance()->Link("ControlPanel", "ControlPanel").'">Administration</a></li>';
+
+                }
+            ?>
 			<li class="nav-item">
 				<a class="nav-link" href="#">About</a>
 			</li>
 		</ul>
         <div class="form-inline my-2 my-lg-0">
-            <!--<li class="nav-item">-->
             <?php
-                $link1 = Application::Instance()->Link("SignIn", "Log");
-                $link2 = Application::Instance()->Link("SignIn", "Deco");
                 if (empty($_SESSION))
                 {
-                    echo '<a class="nav-item nav-link" href="'. $link1 .'">Se connecter</a>';
+                    echo '<a class="nav-item nav-link" href="'. Application::Instance()->Link("SignIn", "Log") .'">Se connecter</a>';
+                    echo '<a class="nav-item nav-link" href="'. Application::Instance()->Link("Register", "Register") .'">S\'inscrire</a>';
                 }
                 else
                 {
-                    echo '<a class="nav-item nav-link" href="'. $link2 .'">Se déconnecter</a>';
+                    echo '<a class="nav-item nav-link" href="'. Application::Instance()->Link("SignIn", "Deco") .'">Se déconnecter</a>';
                 }
             ?>
-            <!--</li>
-            <li class="nav-item">-->
-                <a class="nav-item nav-link" href="<?= Application::Instance()->Link("Register", "Register"); ?>">S'inscrire</a>
-            <!--</li>-->
+
         </div>
 	</div>
 </nav>

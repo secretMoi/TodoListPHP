@@ -21,8 +21,11 @@ use Controllers\Application;
 <body>
 
 <?php
-require_once Application::Instance()->Navbar;
-require_once Application::Instance()->Menu;
+    require_once Application::Instance()->Navbar;
+    if (!empty($_SESSION))
+    {
+        require_once Application::Instance()->Menu;
+    }
 ?>
 
 <?= $content; ?>

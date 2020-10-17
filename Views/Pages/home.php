@@ -12,7 +12,7 @@ use Controllers\Parts\ListDropDown;
 <?php
     if (!empty($_SESSION))
     {
-        echo '<p align="center">Bienvue '. $_SESSION['Nom'].' '.$_SESSION['Prenom'].', vous êtes maintenant connecté.</p>';
+        echo '<p align="center">Bienvenue '. $_SESSION['Nom'].' '.$_SESSION['Prenom'].', vous êtes maintenant connecté.</p>';
     }
     else
     {
