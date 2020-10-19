@@ -3,7 +3,7 @@
 use Controllers\Application;
 
 ?>
-<div class="btn-group-vertical">
+<div class="btn-group">
     <a href="<?php echo Application::Instance()->Link("ControlPanel", "LstPersonnes") ?>">
         <button type="button" class="btn btn-primary">Liste des personnes</button>
     </a>

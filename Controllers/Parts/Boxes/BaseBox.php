@@ -18,13 +18,30 @@ class BaseBox extends BaseParts
 	 * @param string $title Titre à placer dans la FinishedBox
 	 * @param string $content Contenu à placer dans la FinishedBox
 	 */
-	public function __construct3(string $header, string $title, string $content){
-		$this->Header($header);
-		$this->Title($title);
-		$this->Content($content);
+	public function __construct3(string $header, string $title, string $content)
+    {
+        $this->Header($header);
+        $this->Title($title);
+        $this->Content($content);
 	}
 
-	/**
+    public function __construct4(string $header, string $title, string $content, string $status)
+    {
+        $this->Header($header);
+        $this->Title($title);
+        $this->Content($content);
+        switch ($status)
+        {
+            case '1': $this->_filePart="Boxes/Finished";
+                        break;
+            case '4': $this->_filePart="Boxes/Urgent";
+                        break;
+            default: $this->_filePart="Boxes/Current";
+
+        }
+    }
+
+    /**
 	 * @param string $header Header à placer dans la FinishedBox
 	 * @return string Retourne le Header de la FinishedBox
 	 */

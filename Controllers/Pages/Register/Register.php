@@ -21,7 +21,7 @@ class Register extends BaseController
     	// vérification des champs
 		if(!FormValidator::IsSet($_POST, array("Nom", "Prenom", "AdresseMail", "MotDePasse", "conf_MotDePasse")))
 			return;
-
+        var_dump($_POST);
 	    // concordance des mdp
 		if($_POST["MotDePasse"] != $_POST["conf_MotDePasse"])
 			return;
@@ -48,10 +48,10 @@ class Register extends BaseController
 	    $personneTable = new RequestExecuter(Personnes::class);
 		$result = $personneTable->Insert($personne);
 
-		if($result)
+		/**if($result)
         {
             $host = $_SERVER['HTTP_HOST'];
             header("Location: http://$host/Todo");
-        }
+        }*/
     }
 }

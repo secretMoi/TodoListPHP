@@ -4,7 +4,7 @@
  */
 
     if (!empty($variables)) {
-        echo '<table class="table"><thead><tr><th>ID</th><th>Nom</th><th>Prénom</th><th>Email</th><th>Rôle</th></tr></thead>';
+        echo '<table class="table" style="margin: 50px auto"><thead><tr><th>ID</th><th>Nom</th><th>Prénom</th><th>Email</th><th>Rôle</th></tr></thead>';
         echo '<tbody>';
         foreach ($variables as $personne) {
             echo '<tr class="table-active">';
@@ -18,5 +18,5 @@
         echo '</tbody</table>';
     }
     else
-        echo '<center><p>Il n\'y a pas de travailleur encodé.</p></center>';
+        echo '<center><p style="margin: 50px auto">Il n\'y a pas de travailleur encodé.</p></center>';
 ?>

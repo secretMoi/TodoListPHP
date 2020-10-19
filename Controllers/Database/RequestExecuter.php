@@ -58,7 +58,7 @@ class RequestExecuter
 		if (strpos($req, 'SELECT') === 0)
 			return $this->ExecuteSelect($req);
 
-		return null;
+        return null;
 	}
 
 	public function ExecuteSelect(string $req){

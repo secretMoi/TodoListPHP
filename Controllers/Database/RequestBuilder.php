@@ -67,17 +67,22 @@ class RequestBuilder
 
 	public function Update(string $table, BaseModel $model){
 		$table = $this->CleanClassNameFromNamespace($table);
-		$data = $this->Model2Array($model);
+		$datas = $this->Model2Array($model);
+		unset($datas['ID']);
+        var_dump($datas);
 
-		$fields = array_keys($data);
+        $fields = array_keys($datas);
 
-		$this->Add("UPDATE {$table}");
+        $this->Add("UPDATE {$table}");
 		$this->Add("SET");
 
-		foreach ($fields as $field)
-			$this->Add($field . " = :" . $field . ',');
+		// Exécute un foreach double
+		foreach (array_combine($fields,$datas) as $field => $data)
+        {
+            $this->Add($field . " = '" . $data . '\',');
+        }
 
-		$this->request = substr($this->request, 0, -2) . ' ';
+        $this->request = substr($this->request, 0, -2) . ' ';
 
 		return $this;
 	}
