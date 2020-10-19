@@ -17,12 +17,6 @@ if (!empty($_GET['ID']))
         $clientTable = new RequestExecuter(Personnes::class);
         $Client = $clientTable->Execute($clientRequest);
     }
-    $_POST['Role'] = $Client[0]->Role;
-    $_POST['MotDePasse'] = $Client[0]->MotDePasse;
-
-/**var_dump($_POST);
-/**var_dump($Client);
-echo $Client[0]->Nom;**/
 ?>
 <p style="/*max-width: 30rem;*/text-align: center; margin: 100px 0 50px 0; font-size: xx-large ">
     Modifier un client

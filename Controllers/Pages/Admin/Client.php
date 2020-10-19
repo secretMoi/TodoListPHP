@@ -23,9 +23,6 @@ class Client extends BaseController
         if (!FormValidator::IsSet($_POST, array("ID", "Nom", "Prenom", "AdresseMail","MotDePasse","Role")))
             return;
 
-        // Pas besoin de convertir $_POST le fait dans update
-
-        //var_dump($_POST);
         // supprimer le dernier élément de $_POST
         array_pop($_POST);
 
@@ -38,7 +35,10 @@ class Client extends BaseController
                       ->Where("ID", $_POST['ID']);
         $clientTable = new RequestExecuter(Personnes::class);
         var_dump($clientRequest);
-        $Client = $clientTable->ExecuteUpdate($clientRequest, $ClientMAJ);
+        $result = $clientTable->ExecuteUpdate($clientRequest, $ClientMAJ);
 
+        if ($result) {
+            header("Location: index.php?page=ControlPanel/ControlPanel");
+        }
     }
 }

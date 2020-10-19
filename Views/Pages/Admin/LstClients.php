@@ -25,4 +25,4 @@ use Controllers\Application;
     }
     else
         echo '<center><p class="align-content-center" style="margin: 50px auto">Il n\'y a pas de client encodé.</p></center>';
-?>
+
