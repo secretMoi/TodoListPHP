@@ -24,11 +24,26 @@ class Router
 		$this->LoadClasses();
 	}
 
-	public function Link(string $prefix, ?string $controller, ?string $action) : string{
-		if($controller == null || $action == null)
+	/**
+	 * Génère un lien avec la configuration de routage
+	 * @param string $prefix Page de controleur
+	 * @param string|null $controller Nom du controleur
+	 * @param string|null $action Action du controleur à exécuter
+	 * @param array $paramsGet Tableau associatif des paramètres pour transmettre des get
+	 * @return string Renvoie l'url créée
+	 */
+	public function Link(string $prefix, ?string $controller, ?string $action, array $paramsGet = []) : string{
+		if($controller == null || $action == null) // si page d'acceuil
 			return "{$prefix}";
-		else
-			return "{$prefix}?{$this->_pageGetter}={$controller}{$this->_delimiter}{$action}";
+
+		// si toute autre page
+		$url = "{$prefix}?{$this->_pageGetter}={$controller}{$this->_delimiter}{$action}";
+
+		// ajoute les paramètres
+		foreach ($paramsGet as $key => $value)
+			$url .= "&{$key}={$value}";
+
+		return $url;
 	}
 
 	/**

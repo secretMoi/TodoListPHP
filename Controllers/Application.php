@@ -55,8 +55,15 @@ class Application
 		return $this->_database->GetConnection();
 	}
 
-	public function Link(?string $controller, ?string $action) : string{
+	/**
+	 * Génère un lien avec la configuration de routage
+	 * @param string|null $controller Nom du controleur
+	 * @param string|null $action Action du controleur à exécuter
+	 * @param array $paramsGet Tableau associatif des paramètres pour transmettre des get
+	 * @return string Renvoie l'url créée
+	 */
+	public function Link(?string $controller, ?string $action, array $paramsGet = []) : string{
 		$router = new Router();
-		return $router->Link("index.php", $controller, $action);
+		return $router->Link("index.php", $controller, $action, $paramsGet);
 	}
 }

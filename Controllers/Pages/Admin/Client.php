@@ -8,25 +8,39 @@ use Controllers\Database\RequestExecuter;
 use Controllers\FormValidator;
 use Controllers\Pages\BaseController;
 use Models\Personnes;
-use Models\Status;
-use Models\Todo;
 
 class Client extends BaseController
 {
-    function updateClient()
+    function UpdateClient()
     {
-        $this->Render("Admin\Clients\updateClient");
+    	$idPersonne = $_GET['ID'];
+
+	    if (!empty($idPersonne))
+	    {
+		    // récupère le client
+		    $personneRequest = new RequestBuilder();
+		    $personneRequest->Select("*")
+			    ->From(Personnes::class)
+			    ->Where("ID", $idPersonne);
+		    $personneTable = new RequestExecuter(Personnes::class);
+		    $Personne = $personneTable->Execute($personneRequest);
+		    $Personne = $Personne[0];
+
+		    $this->Render("Admin\Clients\updateClient", compact("Personne"));
+	    }
+
+        // todo render erreur
     }
     function Update()
     {
         // vérification des champs
-        if (!FormValidator::IsSet($_POST, array("ID", "Nom", "Prenom", "AdresseMail","MotDePasse","Role")))
+        if (!FormValidator::IsSet($_POST, array("ID", "Nom", "Prenom", "AdresseMail", "MotDePasse", "Role")))
             return;
 
         // supprimer le dernier élément de $_POST
         array_pop($_POST);
 
-        $ClientMAJ = new Personnes($_POST['Nom'],$_POST['Prenom'],$_POST['AdresseMail'],$_POST['MotDePasse'],$_POST['Role']);
+        $ClientMAJ = new Personnes($_POST['Nom'], $_POST['Prenom'], $_POST['AdresseMail'], $_POST['MotDePasse'], $_POST['Role']);
         $ClientMAJ->ID = $_POST['ID'];
 
         // met à jour le client

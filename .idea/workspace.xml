@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5221fb7-2d81-4f0f-9983-8636188de145" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Controllers/FormValidator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Database/RequestBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Database/RequestBuilder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Database/RequestExecuter.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Database/RequestExecuter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Pages/Register/Register.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Pages/Register/Register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/BaseModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/BaseModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Personnes.php" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Personnes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Pages/Register/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Pages/Register/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Pages/Admin/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Pages/Admin/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Pages/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Pages/BaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Pages/Admin/Clients/updateClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Pages/Admin/Clients/updateClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Pages/Admin/LstPersonnes.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Pages/Admin/LstPersonnes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +72,8 @@
       <workItem from="1601903950854" duration="17453000" />
       <workItem from="1602143016145" duration="5722000" />
       <workItem from="1602278123434" duration="325000" />
+      <workItem from="1602965339150" duration="231000" />
+      <workItem from="1603700144088" duration="3270000" />
     </task>
     <task id="LOCAL-00001" summary="Add database">
       <created>1601646563157</created>
@@ -235,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602151095960</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Inscription fonctionnelle">
+      <created>1602591818653</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1602591818653</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,13 +284,18 @@
     <MESSAGE value="Add Link&#10;Centrage du formulaire de connexion&#10;Création de liens dans la navbar.php" />
     <MESSAGE value="Suite RequestBuilder.php&#10;Début d'exécution dans RequestExecuter.php" />
     <MESSAGE value="Amélioration de RequestBuilder.php et de RequestExecuter.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="Amélioration de RequestBuilder.php et de RequestExecuter.php" />
+    <MESSAGE value="Inscription fonctionnelle" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inscription fonctionnelle" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1035" y="520" key="#Notifications" timestamp="1601672740360">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1035" y="520" key="#Notifications/0.0.2560.1400@0.0.2560.1400" timestamp="1601672740360" />
+    <state x="1078" y="79" key="#PHP" timestamp="1603701912778">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1078" y="79" key="#PHP/0.0.2560.1400@0.0.2560.1400" timestamp="1603701912778" />
     <state x="872" y="358" width="1092" height="728" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602105072259">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -299,9 +312,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1602103831381" />
-    <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2" timestamp="1602151095538">
+    <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2" timestamp="1602591818236">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state x="408" y="20" key="CommitChangelistDialog2/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1602591818236" />
     <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1602151095538" />
     <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog" timestamp="1601915684748">
       <screen x="0" y="0" width="2560" height="1400" />
@@ -328,14 +342,15 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.2560.1400@0.0.2560.1400" timestamp="1602101556196" />
-    <state x="872" y="429" key="Vcs.Push.Dialog.v2" timestamp="1602151097385">
+    <state x="872" y="429" key="Vcs.Push.Dialog.v2" timestamp="1602591820818">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state x="872" y="429" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1602591820818" />
     <state x="872" y="429" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1602151097385" />
-    <state x="1098" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602079506405">
+    <state x="1098" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603700152363">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1098" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1602079506405" />
+    <state x="1098" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400@0.0.2560.1400" timestamp="1603700152363" />
     <state x="1049" y="493" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1601673578984">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

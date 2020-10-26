@@ -17,9 +17,7 @@ class BaseController
 		ob_start();
 
 		if (!empty($variables))
-        {
             extract($variables); // donne accès aux variables $posts et $categories
-        }
 
         require($this->viewPath . str_replace('.', '/', $view) . '.php'); // accède à la vue correspondante au controleur
 		$content = ob_get_clean();
