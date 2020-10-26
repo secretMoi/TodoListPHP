@@ -3,20 +3,36 @@
  * @var $variables
  */
 
-    if (!empty($variables)) {
-        echo '<table class="table" style="margin: 50px auto"><thead><tr><th>ID</th><th>Nom</th><th>Prénom</th><th>Email</th><th>Rôle</th></tr></thead>';
-        echo '<tbody>';
-        foreach ($variables as $personne) {
-            echo '<tr class="table-active">';
-            echo '<td>' . $personne->ID . '</td>';
-            echo '<td>' . $personne->Nom . '</td>';
-            echo '<td>' . $personne->Prenom . '</td>';
-            echo '<td>' . $personne->AdresseMail . '</td>';
-            echo '<td>' . $personne->Role . '</td>';
-            echo '</tr>';
-        }
-        echo '</tbody</table>';
-    }
-    else
-        echo '<center><p style="margin: 50px auto">Il n\'y a pas de travailleur encodé.</p></center>';
+    if (!empty($variables)): ?>
+        <table class="table" style="margin: 50px auto">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Rôle</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            <?php foreach ($variables as $personne): ?>
+            <tr class="table-active">
+            <td><?= $personne->ID ?></td>
+            <td><?= $personne->Nom ?></td>
+            <td><?= $personne->Prenom ?></td>
+            <td><?= $personne->AdresseMail ?></td>
+            <td><?= $personne->Role ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+        </table>
+    <?php else: ?>
+        <div style="text-align: center;">
+            <p style="margin: 50px auto">
+                Il n'y a pas de travailleur encodé.
+            </p>
+        </div>
+<?php endif;
 ?>

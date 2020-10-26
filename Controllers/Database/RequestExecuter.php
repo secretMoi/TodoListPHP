@@ -127,6 +127,28 @@ class RequestExecuter
 	}
 
 	/**
+	 * Permet d'exécuter une requête SQL DELETE sur un ID particulier
+	 * @param int $id id de l'enregistrement à supprimer
+	 * @return object Le résultat de la requete
+	 */
+	public function DeleteId(int $id){
+		return $this->Delete("ID", $id);
+	}
+
+	/**
+	 * Permet d'exécuter une requête SQL DELETE sur un ID particulier
+	 * @param string $field Nom ud champ sur lequel supprimer
+	 * @param int $value Valeur de l'enregistrement à supprimer
+	 * @return object Le résultat de la requete
+	 */
+	public function Delete(string $field, int $value){
+		$sql = "DELETE FROM {$this->_table} WHERE {$field}={$value}"; // req sql
+		$req = $this->_database->prepare($sql);
+
+		return $req->execute(array($value));
+	}
+
+	/**
 	 * Permet d'insérer des données dans la bdd
 	 * @param BaseModel $model Modèle de données à insérer dans la bdd
 	 * @return bool true si l'insertion s'est bien passée, false sinon
@@ -182,7 +204,12 @@ class RequestExecuter
 		return $result->execute($data);
 	}
 
-	private function Model2Array($model) : array{
+	/**
+	 * Convertit un model en tableau associatif
+	 * @param object $model Model à convertir
+	 * @return array Tableau associatif créé
+	 */
+	private function Model2Array(object $model) : array{
 		$data = get_object_vars($model); // récupère les données du modèle
 
 		$index = 0;

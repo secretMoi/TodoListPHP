@@ -28,8 +28,20 @@ if (!empty($variables)): ?>
 	        <td><?= $personne->Role; ?></td>
 
 	        <td>
-		        <a class="btn btn-info" href="<?= Application::Instance()->Link("Personne", "UpdateView", array("ID" => $personne->ID)); ?>">Modifier</a>
-		        <a class="btn btn-danger" href="<?= Application::Instance()->Link("Personne", "Delete", array("ID" => $personne->ID)); ?>">Supprimer</a>
+		        <a class="btn btn-info"
+                   href="<?= Application::Instance()->Link("Personne", "UpdateView",
+                       array("ID" => $personne->ID
+                       )); ?>">
+                    Modifier
+                </a>
+		        <a class="btn btn-danger"
+                   href="<?= Application::Instance()->Link("Personne", "Delete",
+                       array("ID" => $personne->ID,
+	                       "Controller" => "Personne",
+	                       "Action" => "LstPersonnes"
+                       )); ?>">
+                    Supprimer
+                </a>
 	        </td>
         </tr>
 <?php endforeach; ?>
@@ -38,7 +50,7 @@ if (!empty($variables)): ?>
 <?php else: ?>
 		<div style="text-align: center;">
             <p class="align-content-center" style="margin: 50px auto">
-                Il n\'y a personne d\'encodé.
+                Il n\'y a personne d'encodé.
             </p>
         </div>
 <?php endif; ?>

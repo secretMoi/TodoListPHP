@@ -22,13 +22,16 @@ use Controllers\Application;
 
 <?php
     require_once Application::Instance()->Navbar;
+
     if (!empty($_SESSION))
-    {
         require_once Application::Instance()->Menu;
-    }
 ?>
 
 <?= $content; ?>
+
+<script src="../_vendor/jquery/dist/jquery.min.js"></script>
+<script src="../_vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../_assets/js/custom.js"></script>
 
 </body>
 </html>

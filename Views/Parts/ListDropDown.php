@@ -7,7 +7,7 @@
 <div class="form-group">
 	<label>
 		<select name="<?= $name; ?>" class="custom-select">
-			<option selected="">Sélectionner une valeur</option>
+			<!--<option selected="">Sélectionner une valeur</option>-->
 
 			<?php foreach ($elements as $key => $value): ?>
 			<option value=<?= $key; ?>><?= $value; ?></option>

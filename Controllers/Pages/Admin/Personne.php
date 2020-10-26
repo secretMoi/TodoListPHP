@@ -3,12 +3,15 @@
 
 namespace Controllers\Pages\Admin;
 
+use Controllers\Application;
 use Controllers\Database\RequestBuilder;
 use Controllers\Database\RequestExecuter;
 use Controllers\FormValidator;
 use Controllers\Pages\BaseController;
+use Models\Gerer;
 use Models\Personnes;
 use Models\Role;
+use Models\Todo;
 
 class Personne extends BaseController
 {
@@ -49,30 +52,53 @@ class Personne extends BaseController
         // todo render erreur
     }
 
-    //todo corriger
+	/**
+	 * Update une personne
+	 */
     function Update()
     {
         // vérification des champs
         if (!FormValidator::IsSet($_POST, array("ID", "Nom", "Prenom", "AdresseMail", "MotDePasse", "Role")))
             return;
+	    if (!FormValidator::IsSet($_GET, array("Controller", "Action")))
+		    return;
 
         // supprimer le dernier élément de $_POST
         array_pop($_POST);
 
-        $ClientMAJ = new Personnes($_POST['Nom'], $_POST['Prenom'], $_POST['AdresseMail'], $_POST['MotDePasse'], $_POST['Role']);
-        $ClientMAJ->ID = $_POST['ID'];
+        $PersonneMAJ = new Personnes($_POST['Nom'], $_POST['Prenom'], $_POST['AdresseMail'], $_POST['MotDePasse'], $_POST['Role']);
+        $PersonneMAJ->ID = $_POST['ID'];
 
         // met à jour le client
-        $clientRequest = new RequestBuilder();
-        $clientRequest->Update(Personnes::class, $ClientMAJ)
+        $personneRequest = new RequestBuilder();
+        $personneRequest->Update(Personnes::class, $PersonneMAJ)
                       ->Where("ID", $_POST['ID']);
-        $clientTable = new RequestExecuter(Personnes::class);
-	    var_dump($clientRequest);
-        $result = $clientTable->ExecuteUpdate($clientRequest, $ClientMAJ);
+        $personneTable = new RequestExecuter(Personnes::class);
+	    var_dump($personneRequest);
+        $result = $personneTable->ExecuteUpdate($personneRequest, $PersonneMAJ);
 
         if ($result)
-            header("Location: index.php?page=ControlPanel/ControlPanel");
+            header("Location: " . Application::Instance()->Link($_GET['Controller'], $_GET['Action']));
     }
 
-    //todo actions supprimer
+	/**
+	 * Supprime une personne et la délie de ses tâches
+	 */
+    public function Delete(){
+	    // vérification des champs
+	    if (!FormValidator::IsSet($_GET, array("ID", "Controller", "Action")))
+		    return;
+
+	    $idToDelete = $_GET['ID'];
+
+		// Suppression des tâches
+	    $req = new RequestExecuter(Gerer::class);
+	    $result = $req->Delete("IDPers", $idToDelete);
+
+		$req = new RequestExecuter(Personnes::class);
+		$result &= $req->DeleteId($idToDelete);
+
+	    if ($result)
+		    header("Location: " . Application::Instance()->Link($_GET['Controller'], $_GET['Action']));
+    }
 }

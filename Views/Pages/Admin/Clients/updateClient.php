@@ -14,7 +14,8 @@ use Models\Role;
 <p style="/*max-width: 30rem;*/text-align: center; margin: 100px 0 50px 0; font-size: xx-large ">
     Modifier un <?= $RoleCourant->Nom; ?>
 </p>
-<form method="post" action="<?= Application::Instance()->Link("Personne", "Update"); ?>" style="max-width: 30rem; margin: auto;">
+<form method="post" action="<?= Application::Instance()->Link("Personne", "Update",
+array("Controller" => "ControlPanel", "Action" => "LstPersonnes")); ?>" style="max-width: 30rem; margin: auto;">
     <div class="form-group">
         <input name="ID" class="form-control form-control-lg" type="hidden" value="<?php echo $Personne->ID; ?>" id="inputLarge">
     </div>
