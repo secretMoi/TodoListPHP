@@ -5,6 +5,11 @@
  */
 
 use Controllers\Application;
+use Controllers\Parts\Alert;
+
+Application::SetAlert(new Alert(Alert::$Error, "coucou"));
+Application::SetAlert(new Alert(Alert::$Success, "coucou"));
+Application::SetAlert(new Alert(Alert::$Warning, "coucou"));
 
 ?>
 <!doctype html>
@@ -16,11 +21,20 @@ use Controllers\Application;
 	<title><?= Application::Instance()->title; ?></title>
 
 	<link href="<?= Application::Instance()->Css; ?>" rel="stylesheet" media="screen">
+
+    <?php if(Application::AnyAlert()): ?>
+    <script src="<?=Application::Instance()->Javascript("jquery-3.3.1.slim.min"); ?>" defer></script>
+    <script src="<?= Application::Instance()->Javascript("bootstrap.min"); ?>" defer></script>
+    <?php endif; ?>
 </head>
 
 <body>
 
-<?php
+    <?php
+    foreach (Application::GetAlerts() as $alert){
+        $alert->Display();
+    }
+
     require_once Application::Instance()->Navbar;
 
     if (!empty($_SESSION))
@@ -28,10 +42,6 @@ use Controllers\Application;
 ?>
 
 <?= $content; ?>
-
-<script src="../_vendor/jquery/dist/jquery.min.js"></script>
-<script src="../_vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../_assets/js/custom.js"></script>
 
 </body>
 </html>

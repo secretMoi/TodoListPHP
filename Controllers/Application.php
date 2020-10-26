@@ -5,6 +5,7 @@ namespace Controllers;
 
 
 use Controllers\Database\Database;
+use Controllers\Parts\Alert;
 use PDO;
 
 /**
@@ -20,8 +21,11 @@ class Application
 	private static $Instance; // instance de App comme singleton
 
 	public $Css = "Views/css/bootstrap-slate.css";
+	private $_javascriptPath = "Views/Javascript/";
 	public $Menu = "Views/Parts/menu.php";
 	public $Navbar = "Views/Parts/navbar.php";
+
+	private static $_alerts = array();
 
 	private function __construct()
 	{
@@ -65,5 +69,43 @@ class Application
 	public function Link(?string $controller, ?string $action, array $paramsGet = []) : string{
 		$router = new Router();
 		return $router->Link("index.php", $controller, $action, $paramsGet);
+	}
+
+	/**
+	 * Génère le chemin des fichiers js
+	 * @param string $file Nom du fichier sans extension
+	 * @return string Retourne le chemin complet du fichier js
+	 */
+	public function Javascript(string $file) : string{
+		return $this->_javascriptPath . $file . ".js";
+	}
+
+	/**
+	 * Ajoute une alerte
+	 * @param Alert $alert Alerte à afficher
+	 */
+	public static function SetAlert(Alert $alert){
+		self::$_alerts[] = $alert;
+	}
+
+	/**
+	 * Retourne un tableau d'alertes
+	 * @return array Tableau des alertes
+	 */
+	public static function GetAlerts() : array{
+		$result = self::$_alerts;
+		self::$_alerts = array();
+		return $result;
+	}
+
+	/**
+	 * Vérifie si il y a des alertes
+	 * @return bool true si il y a au moins une alerte, false sinon
+	 */
+	public static function AnyAlert() : bool{
+		if(empty(self::$_alerts))
+			return false;
+
+		return true;
 	}
 }
