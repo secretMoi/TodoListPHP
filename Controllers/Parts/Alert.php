@@ -20,6 +20,10 @@ class Alert extends BaseParts
 		$this->__message = $message;
 	}
 
+
+	/**
+	 * Affiche le code HTML de l'alerte
+	 */
 	public function Display(){
 		extract($this->GetThisAttributes());
 		$this->AddPart($this->_filePart, compact('type', 'message'));

@@ -6,10 +6,7 @@
 
 use Controllers\Application;
 use Controllers\Parts\Alert;
-
-/*Application::SetAlert(new Alert(Alert::$Error, "coucou"));
-Application::SetAlert(new Alert(Alert::$Success, "coucou"));
-Application::SetAlert(new Alert(Alert::$Warning, "coucou"));*/
+use Models\BaseModel;
 
 ?>
 <!doctype html>
@@ -32,7 +29,7 @@ Application::SetAlert(new Alert(Alert::$Warning, "coucou"));*/
 
     <?php
     foreach (Application::GetAlerts() as $alert){
-        $alert = \Models\BaseModel::Cast($alert, Alert::class);
+        $alert = BaseModel::Cast($alert, Alert::class);
         $alert->Display();
     }
 

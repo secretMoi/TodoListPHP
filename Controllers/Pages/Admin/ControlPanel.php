@@ -14,12 +14,18 @@ use Models\Todo;
 
 class ControlPanel Extends BaseController
 {
-    public function ControlPanel()
+	/**
+	 * Affiche la page d'accueil du panneau d'administration
+	 */
+	public function ControlPanel()
     {
         $this->Render("Admin\ControlPanel");
     }
 
-    public function LstPersonnes()
+	/**
+	 * Affiche la liste des personnes
+	 */
+	public function LstPersonnes()
     {
         // récupère toutes les personnes
         $personnesRequest = new RequestBuilder();
@@ -31,7 +37,10 @@ class ControlPanel Extends BaseController
         $this->Render("Admin\LstPersonnes", $Personnes);
     }
 
-    public function LstClients()
+	/**
+	 * Affiche la liste des clients
+	 */
+	public function LstClients()
     {
         // récupère toutes les personnes
         $personnesRequest = new RequestBuilder();
@@ -44,7 +53,10 @@ class ControlPanel Extends BaseController
         $this->Render("Admin\LstClients", $Personnes);
     }
 
-    public function LstTravailleurs()
+	/**
+	 * Affiche la liste des travailleurs
+	 */
+	public function LstTravailleurs()
     {
         // récupère toutes les personnes
         $personnesRequest = new RequestBuilder();
@@ -57,7 +69,10 @@ class ControlPanel Extends BaseController
         $this->Render("Admin\LstTravailleurs", $Personnes);
     }
 
-    public function LstTaches()
+	/**
+	 * Affiche la liste des tâches
+	 */
+	public function LstTaches()
     {
         // récupère toutes les personnes
         $tachesRequest = new RequestBuilder();
@@ -69,12 +84,18 @@ class ControlPanel Extends BaseController
         $this->Render("Admin\LstTaches", $Taches);
     }
 
-    public function AjouterTache()
+	/**
+	 * Affiche le formulaire d'encodage d'une nouvelle tâche
+	 */
+	public function AjouterTache()
     {
         $this->Render("Admin\AjouterTache");
     }
 
-    public function AjoutTache()
+	/**
+	 * Traite les données pour ajouter une nouvelle tâche
+	 */
+	public function AjoutTache()
     {
         // vérification des champs
         if (!FormValidator::IsSet($_POST, array("Titre", "Contenu", "Status")))
