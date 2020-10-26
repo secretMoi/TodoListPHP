@@ -6,9 +6,10 @@ class ListDropDown extends BaseParts
 {
 	private $_filePart = "ListDropDown"; // fichier de vue à afficher
 	private $__elements; // données à afficher
+	private $__name; // nom de la liste
 
-	public function __construct1($elements){
-		$this->Fill($elements);
+	public function __construct1($name){
+		$this->__name = $name;
 	}
 
 	/**
@@ -16,7 +17,6 @@ class ListDropDown extends BaseParts
 	 * @param array $elements Eléments à insérer
 	 */
 	public function Fill(array $elements) : void{
-
 		$this->__elements = $elements;
 	}
 
@@ -34,7 +34,7 @@ class ListDropDown extends BaseParts
 	public function Elements(array $elementList) : void{
 		$this->Fill($elementList);
 		extract($this->GetThisAttributes());
-		$this->AddPart($this->_filePart, compact('elements'));
+		$this->AddPart($this->_filePart, compact('elements', 'name'));
 	}
 
 	/**

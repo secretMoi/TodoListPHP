@@ -28,8 +28,8 @@ if (!empty($variables)): ?>
 	        <td><?= $personne->Role; ?></td>
 
 	        <td>
-		        <a class="btn btn-info" href="<?= Application::Instance()->Link("Client", "UpdateClient", array("ID" => $personne->ID)); ?>">Modifier</a>
-		        <a class="btn btn-danger" href="<?= Application::Instance()->Link("Client", "deleteClient", array("ID" => $personne->ID)); ?>">Supprimer</a>
+		        <a class="btn btn-info" href="<?= Application::Instance()->Link("Personne", "UpdateView", array("ID" => $personne->ID)); ?>">Modifier</a>
+		        <a class="btn btn-danger" href="<?= Application::Instance()->Link("Personne", "Delete", array("ID" => $personne->ID)); ?>">Supprimer</a>
 	        </td>
         </tr>
 <?php endforeach; ?>

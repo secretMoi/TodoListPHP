@@ -8,10 +8,11 @@ use Controllers\Database\RequestExecuter;
 use Controllers\FormValidator;
 use Controllers\Pages\BaseController;
 use Models\Personnes;
+use Models\Role;
 
-class Client extends BaseController
+class Personne extends BaseController
 {
-    function UpdateClient()
+    function UpdateView()
     {
     	$idPersonne = $_GET['ID'];
 
@@ -26,11 +27,29 @@ class Client extends BaseController
 		    $Personne = $personneTable->Execute($personneRequest);
 		    $Personne = $Personne[0];
 
-		    $this->Render("Admin\Clients\updateClient", compact("Personne"));
+		    $role = new RequestExecuter(Role::class);
+		    $roles = $role->SelectAll();
+
+		    // création du role courant
+		    $RoleCourant = null;
+		    foreach ($roles as $key => $value){
+			    if($value->ID == $Personne->Role)
+				    $RoleCourant = $value;
+		    }
+
+		    // création des rôles pour la liste
+		    $RolesList = array();
+		    foreach ($roles as $key => $value){
+		    	$RolesList[$value->ID] = $value->Nom;
+		    }
+
+		    $this->Render("Admin\Clients\updateClient", compact("Personne", "RolesList", "RoleCourant"));
 	    }
 
         // todo render erreur
     }
+
+    //todo corriger
     function Update()
     {
         // vérification des champs
@@ -45,14 +64,15 @@ class Client extends BaseController
 
         // met à jour le client
         $clientRequest = new RequestBuilder();
-        $clientRequest->Update(Personnes::class,$ClientMAJ)
+        $clientRequest->Update(Personnes::class, $ClientMAJ)
                       ->Where("ID", $_POST['ID']);
         $clientTable = new RequestExecuter(Personnes::class);
-        var_dump($clientRequest);
+	    var_dump($clientRequest);
         $result = $clientTable->ExecuteUpdate($clientRequest, $ClientMAJ);
 
-        if ($result) {
+        if ($result)
             header("Location: index.php?page=ControlPanel/ControlPanel");
-        }
     }
+
+    //todo actions supprimer
 }
