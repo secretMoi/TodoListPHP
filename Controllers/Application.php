@@ -25,8 +25,6 @@ class Application
 	public $Menu = "Views/Parts/menu.php";
 	public $Navbar = "Views/Parts/navbar.php";
 
-	private static $_alerts = array();
-
 	private function __construct()
 	{
 		session_start();
@@ -85,7 +83,7 @@ class Application
 	 * @param Alert $alert Alerte à afficher
 	 */
 	public static function SetAlert(Alert $alert){
-		self::$_alerts[] = $alert;
+		$_SESSION["alerts"][] = $alert;
 	}
 
 	/**
@@ -93,8 +91,11 @@ class Application
 	 * @return array Tableau des alertes
 	 */
 	public static function GetAlerts() : array{
-		$result = self::$_alerts;
-		self::$_alerts = array();
+		if(empty($_SESSION['alerts']))
+			return array();
+
+		$result = $_SESSION["alerts"];
+		unset($_SESSION['alerts']);
 		return $result;
 	}
 
@@ -103,7 +104,7 @@ class Application
 	 * @return bool true si il y a au moins une alerte, false sinon
 	 */
 	public static function AnyAlert() : bool{
-		if(empty(self::$_alerts))
+		if(empty($_SESSION['alerts']))
 			return false;
 
 		return true;

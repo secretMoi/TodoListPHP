@@ -13,6 +13,7 @@ class Alert extends BaseParts
 	public static $Warning = "warning";
 	public static $Error = "danger";
 	public static $Success = "success";
+	public static $Information = "primary";
 
 	public function __construct2($type, $message){
 		$this->__type = $type;

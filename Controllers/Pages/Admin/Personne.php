@@ -8,6 +8,7 @@ use Controllers\Database\RequestBuilder;
 use Controllers\Database\RequestExecuter;
 use Controllers\FormValidator;
 use Controllers\Pages\BaseController;
+use Controllers\Parts\Alert;
 use Models\Gerer;
 use Models\Personnes;
 use Models\Role;
@@ -48,8 +49,6 @@ class Personne extends BaseController
 
 		    $this->Render("Admin\Clients\updateClient", compact("Personne", "RolesList", "RoleCourant"));
 	    }
-
-        // todo render erreur
     }
 
 	/**
@@ -74,11 +73,15 @@ class Personne extends BaseController
         $personneRequest->Update(Personnes::class, $PersonneMAJ)
                       ->Where("ID", $_POST['ID']);
         $personneTable = new RequestExecuter(Personnes::class);
-	    var_dump($personneRequest);
+
         $result = $personneTable->ExecuteUpdate($personneRequest, $PersonneMAJ);
 
         if ($result)
-            header("Location: " . Application::Instance()->Link($_GET['Controller'], $_GET['Action']));
+	        Application::SetAlert(new Alert(Alert::$Success, "La personne {$PersonneMAJ->Nom} a été modifiée avec succès"));
+		else
+			Application::SetAlert(new Alert(Alert::$Error, "La personne {$PersonneMAJ->Nom} n'a pas pu être modifiée"));
+
+	    header("Location: " . Application::Instance()->Link($_GET['Controller'], $_GET['Action']));
     }
 
 	/**
@@ -98,7 +101,13 @@ class Personne extends BaseController
 		$req = new RequestExecuter(Personnes::class);
 		$result &= $req->DeleteId($idToDelete);
 
-	    if ($result)
+	    if ($result){
+		    Application::SetAlert(new Alert(Alert::$Success, "La personne a été supprimée avec succès"));
 		    header("Location: " . Application::Instance()->Link($_GET['Controller'], $_GET['Action']));
+	    }
+		else{
+			Application::SetAlert(new Alert(Alert::$Error, "La personne n'a pas pu être supprimée"));
+			header("Location: " . Application::Instance()->Link($_GET['Controller'], $_GET['Action']));
+		}
     }
 }

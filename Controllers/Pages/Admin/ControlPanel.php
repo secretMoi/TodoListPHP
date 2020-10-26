@@ -2,10 +2,12 @@
 
 namespace Controllers\Pages\Admin;
 
+use Controllers\Application;
 use Controllers\Database\RequestBuilder;
 use Controllers\Database\RequestExecuter;
 use Controllers\FormValidator;
 use Controllers\Pages\BaseController;
+use Controllers\Parts\Alert;
 use Models\Personnes;
 use Models\Status;
 use Models\Todo;
@@ -77,12 +79,12 @@ class ControlPanel Extends BaseController
         // vérification des champs
         if (!FormValidator::IsSet($_POST, array("Titre", "Contenu", "Status")))
             return;
+	    if (!FormValidator::IsSet($_GET, array("Controller", "Action")))
+		    return;
 
         // convertit les var post en model
         $todo = new Todo();
         $todo->Array2Model($_POST);
-
-        var_dump($todo);
 
         // date de création est aujourd'hui
         $todo->DateCreation = date("Y-m-d H:i:s");
@@ -99,15 +101,15 @@ class ControlPanel Extends BaseController
 
         $todo->Status = $roleResult[0]->ID;
 
-        var_dump($todo);
-
         //ajout le model dans la bd
         $todoTable = new RequestExecuter(Todo::class);
         $result = $todoTable->Insert($todo);
 
-        if ($result) {
-            $host = $_SERVER['HTTP_HOST'];
-            header("Location: http://$host/Todo/index.php?page=ControlPanel/ControlPanel");
-        }
+	    if ($result)
+		    Application::SetAlert(new Alert(Alert::$Success, "La tâche {$todo->Titre} a été ajoutée avec succès"));
+	    else
+		    Application::SetAlert(new Alert(Alert::$Error, "La tâche {$todo->Titre} n'a pas pu être ajoutée"));
+
+        header("Location: " . Application::Instance()->Link($_GET['Controller'], $_GET['Action']));
     }
 }
