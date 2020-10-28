@@ -1,9 +1,10 @@
 <?php
 
 /**
- * @var $coucou
+ * @var $taches
  */
 
+use Controllers\Parts\Boxes\BaseBox;
 use Controllers\Parts\Boxes\FinishedBox;
 use Controllers\Parts\ListDropDown;
 
@@ -24,6 +25,8 @@ use Controllers\Parts\ListDropDown;
 
 <?php (new FinishedBox("a", "b", "c"))->Display(); ?>
 
-
-
+<?php foreach ($taches as $tache){
+	(new BaseBox($tache->Titre, $tache->Contenu, $tache->DateModif, $tache->Status))->Display();
+}
+?>
 

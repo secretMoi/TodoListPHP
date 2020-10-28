@@ -89,7 +89,35 @@ class ControlPanel Extends BaseController
 	 */
 	public function AjouterTache()
     {
-        $this->Render("Admin\AjouterTache");
+    	// récupère les clients
+    	$req = new RequestBuilder();
+    	$req->Select("*")
+		    ->From(Personnes::class)
+		    ->Where("Role", 2);
+
+    	$clients = (new RequestExecuter(Personnes::class))->Execute($req);
+
+	    // création des clients pour la liste
+	    $clientsList = array();
+	    foreach ($clients as $key => $value){
+		    $clientsList[$value->ID] = "{$value->Nom} {$value->Prenom}";
+	    }
+
+		// récupère les travailleurs
+	    $req->Reset()
+		    ->Select('*')
+		    ->From(Personnes::class)
+		    ->Where("Role", 1);
+
+	    $travailleurs = (new RequestExecuter(Personnes::class))->Execute($req);
+
+	    // création des clients pour la liste
+	    $travailleursList = array();
+	    foreach ($travailleurs as $key => $value){
+		    $travailleursList[$value->ID] = "{$value->Nom} {$value->Prenom}";
+	    }
+
+        $this->Render("Admin\AjouterTache", compact('clientsList', 'travailleursList'));
     }
 
 	/**
