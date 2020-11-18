@@ -35,7 +35,7 @@ use Models\BaseModel;
 
     require_once Application::Instance()->Navbar;
 
-    if (!empty($_SESSION))
+    if (Application::Instance()->IsAdmin())
         require_once Application::Instance()->Menu;
 ?>
 

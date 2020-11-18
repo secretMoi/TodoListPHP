@@ -5,7 +5,7 @@ use Controllers\Application;
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-	<a class="navbar-brand" href="#"><?= Application::Instance()->title; ?></a>
+	<a class="navbar-brand" href="<?= Application::Instance()->Link(null, null); ?>"><?= Application::Instance()->title; ?></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -18,8 +18,7 @@ use Controllers\Application;
             <?php
                 if (!empty($_SESSION))
                 {
-                    echo '<li class="nav-item"><a class="nav-link" href="'. Application::Instance()->Link("ControlPanel", "ControlPanel").'">Administration</a></li>';
-
+                    echo '<li class="nav-item"><a class="nav-link" href="'. Application::Instance()->Link("ControlPanel", "ControlPanel").'">Panneau de contrôle</a></li>';
                 }
             ?>
 			<li class="nav-item">

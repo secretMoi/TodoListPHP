@@ -109,4 +109,12 @@ class Application
 
 		return true;
 	}
+
+	public function IsAdmin() : bool{
+		return
+			!empty($_SESSION) && // si on est connecté
+			$_SESSION['Role'] == 1 // si on est staff
+			&& isset($_GET['page']) // si on demande une page
+			&& strpos($_GET['page'], 'ControlPanel') !== false; // si on demande une page admin
+	}
 }
