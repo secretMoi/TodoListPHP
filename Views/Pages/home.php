@@ -21,9 +21,6 @@ use Controllers\Parts\ListDropDown;
     <?php endif; ?>
 
 <br>
-<?php (new ListDropDown())->Elements(array("a" => "b")); ?>
-
-<?php (new FinishedBox("a", "b", "c"))->Display(); ?>
 
 <?php foreach ($taches as $tache){
 	(new BaseBox($tache->Titre, $tache->Contenu, $tache->DateModif, $tache->Status))->Display();

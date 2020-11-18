@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5221fb7-2d81-4f0f-9983-8636188de145" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Views/Parts/MenuSelonRole/menuAdmin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Parts/MenuSelonRole/menuClient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/Parts/MenuSelonRole/menuTravailleur.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Pages/Login/SignIn.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Pages/Login/SignIn.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Parts/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Parts/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Pages/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Pages/home.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +79,7 @@
       <workItem from="1603870219712" duration="3520000" />
       <workItem from="1604585028043" duration="878000" />
       <workItem from="1605533448233" duration="29000" />
-      <workItem from="1605693449603" duration="3109000" />
+      <workItem from="1605693449603" duration="3181000" />
     </task>
     <task id="LOCAL-00001" summary="Add database">
       <created>1601646563157</created>
@@ -317,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605695084239</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Ajout du menu selon le role&#10;Ajout d'une erreur si log de connexion incorrect">
+      <created>1605696633430</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1605696633430</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,7 +338,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Début INSERT DANS LA CLASSE Table.php" />
     <MESSAGE value="Fin méthode INSERT + documentation" />
     <MESSAGE value="Génération de constructeur pour les modèles&#10;Nom des tables automatiques généré par les modèles" />
     <MESSAGE value="Ajout de la possibilité de caster les classes&#10;Nom des tables rendu dynamique grâce aux classes pour Table.php" />
@@ -361,7 +362,8 @@
     <MESSAGE value="Ajout d'un client et d'un travailleur dans le front de l'ajout de tache&#10;Ajout de la liste des tâches de l'utilisateur sur sa page d'accueil" />
     <MESSAGE value="Fix co/déco" />
     <MESSAGE value="Simplification session" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplification session" />
+    <MESSAGE value="Ajout du menu selon le role&#10;Ajout d'une erreur si log de connexion incorrect" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout du menu selon le role&#10;Ajout d'une erreur si log de connexion incorrect" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1035" y="520" key="#Notifications" timestamp="1601672740360">
@@ -393,12 +395,12 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1010" y="455" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1605693982858" />
-    <state x="408" y="20" width="1573" height="1049" key="CommitChangelistDialog2" timestamp="1605695083942">
+    <state x="408" y="20" width="1573" height="1049" key="CommitChangelistDialog2" timestamp="1605696633048">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="408" y="20" key="CommitChangelistDialog2/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1602591818236" />
     <state x="408" y="20" width="1573" height="1049" key="CommitChangelistDialog2/0.0.2560.1400/-1920.218.1920.1040@0.0.2560.1400" timestamp="1603707186517" />
-    <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1605695083942" />
+    <state x="408" y="20" width="1625" height="1300" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1605696633048" />
     <state x="92" y="92" width="2376" height="1216" key="DiffContextDialog" timestamp="1604587280917">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -424,12 +426,12 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.2560.1400@0.0.2560.1400" timestamp="1602101556196" />
-    <state x="872" y="429" key="Vcs.Push.Dialog.v2" timestamp="1605695085537">
+    <state x="872" y="429" key="Vcs.Push.Dialog.v2" timestamp="1605696634559">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="872" y="429" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.189.1920.1040@0.0.2560.1400" timestamp="1602591820818" />
     <state x="872" y="429" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.218.1920.1040@0.0.2560.1400" timestamp="1603707188009" />
-    <state x="872" y="429" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1605695085537" />
+    <state x="872" y="429" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1605696634559" />
     <state x="1098" y="614" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603700152363">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

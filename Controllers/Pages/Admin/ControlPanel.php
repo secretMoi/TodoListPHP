@@ -34,6 +34,20 @@ class ControlPanel Extends BaseController
         $personneTable = new RequestExecuter(Personnes::class);
         $Personnes = $personneTable->Execute($personnesRequest);
 
+        foreach ($Personnes as $personne){
+        	switch ($personne->Role){
+		        case 1:
+			        $personne->Role = "Staff";
+			        break;
+		        case 2:
+			        $personne->Role = "Client";
+			        break;
+		        case 3:
+			        $personne->Role = "Travailleur";
+			        break;
+	        }
+        }
+
         $this->Render("Admin\LstPersonnes", $Personnes);
     }
 
