@@ -5,6 +5,8 @@
  */
 
 use Controllers\Application;
+use Models\BaseModel;
+use Controllers\Parts\Alert;
 
 ?>
 <!doctype html>
@@ -16,9 +18,21 @@ use Controllers\Application;
     <title><?= Application::Instance()->title; ?></title>
 
     <link href="<?= Application::Instance()->Css; ?>" rel="stylesheet" media="screen">
+
+	<?php if(Application::AnyAlert()): ?>
+        <script src="<?=Application::Instance()->Javascript("jquery-3.3.1.slim.min"); ?>" defer></script>
+        <script src="<?= Application::Instance()->Javascript("bootstrap.min"); ?>" defer></script>
+	<?php endif; ?>
 </head>
 
 <body>
+
+<?php
+foreach (Application::GetAlerts() as $alert){
+	$alert = BaseModel::Cast($alert, Alert::class);
+	$alert->Display();
+}
+?>
 
 <?= $content; ?>
 

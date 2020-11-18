@@ -2,11 +2,13 @@
 
 namespace Controllers\Pages\Login;
 
+use Controllers\Application;
 use Controllers\Authentification\Security;
 use Controllers\Database\RequestBuilder;
 use Controllers\Database\RequestExecuter;
 use Controllers\FormValidator;
 use Controllers\Pages\BaseController;
+use Controllers\Parts\Alert;
 use Models\Personnes;
 
 class SignIn extends BaseController
@@ -39,7 +41,9 @@ class SignIn extends BaseController
 
         // Finalement, on détruit la session.
         session_destroy();
-        header('Location: index.php');
+
+	    Application::SetAlert(new Alert(Alert::$Success, "Vous avez bien été déconnecté"));
+	    header('Location: ' .  Application::Instance()->Link('SignIn', 'Log'));
     }
 
     public function Connexion(){
@@ -72,6 +76,8 @@ class SignIn extends BaseController
             $_SESSION['Prenom'] = $personneResult->Prenom;
             $_SESSION['AdresseMail'] = $personneResult->AdresseMail;
             $_SESSION['Role'] = $personneResult->Role;
+
+	        Application::SetAlert(new Alert(Alert::$Success, "Connecté en tant que " . $personneResult->Nom));
 
             $link = 'index.php';
             header("Location: $link");

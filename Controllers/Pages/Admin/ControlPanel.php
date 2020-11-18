@@ -125,6 +125,7 @@ class ControlPanel Extends BaseController
 	 */
 	public function AjoutTache()
     {
+    	//todo valider client & travailleur
         // vérification des champs
         if (!FormValidator::IsSet($_POST, array("Titre", "Contenu", "Status")))
             return;
