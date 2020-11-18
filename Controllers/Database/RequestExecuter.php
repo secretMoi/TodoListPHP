@@ -205,6 +205,12 @@ class RequestExecuter
 	}
 
 	/**
+	 * @return int L'id du dernier élément ajouté dans la bdd
+	 */
+	public function LastInsert() : int{
+		return $this->_database->lastInsertId();
+	}
+	/**
 	 * Convertit un model en tableau associatif
 	 * @param object $model Model à convertir
 	 * @return array Tableau associatif créé

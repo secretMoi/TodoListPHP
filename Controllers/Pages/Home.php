@@ -19,13 +19,14 @@ class Home extends BaseController
 		$gererRequest->Select("*")
 			->From(Gerer::class)
 			->Where("IDPers", $_SESSION['Id']);
-		$table = new RequestExecuter(Todo::class);
+		$table = new RequestExecuter(Gerer::class);
 		$gerer = $table->Execute($gererRequest);
 
 		$taches = array();
-		$table = new RequestExecuter(Todo::class);
-		foreach ($taches as $tache){
-			array_push($taches, $table->Select($tache->ID));
+		foreach ($gerer as $gererItem){
+			$tache = (new RequestExecuter(Todo::class))->Select($gererItem->IDTodo);
+
+			array_push($taches, $tache);
 		}
 
 		$this->Render("home", compact('taches'));

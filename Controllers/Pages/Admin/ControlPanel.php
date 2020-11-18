@@ -8,6 +8,7 @@ use Controllers\Database\RequestExecuter;
 use Controllers\FormValidator;
 use Controllers\Pages\BaseController;
 use Controllers\Parts\Alert;
+use Models\Gerer;
 use Models\Personnes;
 use Models\Status;
 use Models\Todo;
@@ -148,7 +149,7 @@ class ControlPanel Extends BaseController
 	public function AjoutTache()
     {
         // vérification des champs
-        if (!FormValidator::IsSet($_POST, array("Titre", "Contenu", "Status")))
+        if (!FormValidator::IsSet($_POST, array("Titre", "Contenu", "Status", "Client", "Travailleur")))
             return;
 	    if (!FormValidator::IsSet($_GET, array("Controller", "Action")))
 		    return;
@@ -165,6 +166,9 @@ class ControlPanel Extends BaseController
         //ajout le model dans la bd
         $todoTable = new RequestExecuter(Todo::class);
         $result = $todoTable->Insert($todo);
+
+	    $gererModel = new Gerer($_POST['Travailleur'], $todoTable->LastInsert());
+	    $result &= (new RequestExecuter(Gerer::class))->Insert($gererModel);
 
 	    if ($result)
 		    Application::SetAlert(new Alert(Alert::$Success, "La tâche {$todo->Titre} a été ajoutée avec succès"));
