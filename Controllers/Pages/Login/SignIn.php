@@ -20,13 +20,8 @@ class SignIn extends BaseController
 
     public function Deco()
     {
-        // Initialisation de la session.
-        // Si vous utilisez un autre nom
-        // session_name("autrenom")
-                session_start();
-
         // Détruit toutes les variables de session
-                $_SESSION = array();
+	    $_SESSION = array();
 
         // Si vous voulez détruire complètement la session, effacez également
         // le cookie de session.
@@ -83,5 +78,4 @@ class SignIn extends BaseController
             header("Location: $link");
         }
     }
-
 }
