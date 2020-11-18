@@ -3,6 +3,9 @@
 use Controllers\Application;
 
 ?>
+
+
+
 <form method="post" action="<?= Application::Instance()->Link("SignIn", "Connexion"); ?>" style="max-width: 30rem; margin: 100px auto; ">
     <div class="form-group">
         <label for="exampleInputEmail1">Adresse mail</label>
@@ -20,5 +23,11 @@ use Controllers\Application;
         <label class="form-check-label" for="exampleCheck1">Rester connecté</label>
     </div>
 
-    <button type="submit" class="btn btn-primary" name="log" style="margin: 10px auto;">Se connecter</button>
+    <p>
+        <button type="submit" class="btn btn-primary" name="log" style="margin: 10px auto;">Se connecter</button>
+
+        <a href="<?= Application::Instance()->Link("Register", "Register"); ?>" style="margin-left: 250px">
+            <button type="button" class="btn btn-primary">S'inscrire</button>
+        </a>
+    </p>
 </form>

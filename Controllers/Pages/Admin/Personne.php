@@ -9,6 +9,7 @@ use Controllers\Database\RequestExecuter;
 use Controllers\FormValidator;
 use Controllers\Pages\BaseController;
 use Controllers\Parts\Alert;
+use Models\BaseModel;
 use Models\Gerer;
 use Models\Personnes;
 use Models\Role;
@@ -57,7 +58,7 @@ class Personne extends BaseController
     function Update()
     {
         // vérification des champs
-        if (!FormValidator::IsSet($_POST, array("ID", "Nom", "Prenom", "AdresseMail", "MotDePasse", "Role")))
+        if (!FormValidator::IsSet($_POST, array("ID", "Nom", "Prenom", "AdresseMail", "Role")))
             return;
 	    if (!FormValidator::IsSet($_GET, array("Controller", "Action")))
 		    return;
@@ -65,7 +66,10 @@ class Personne extends BaseController
         // supprimer le dernier élément de $_POST
         array_pop($_POST);
 
-        $PersonneMAJ = new Personnes($_POST['Nom'], $_POST['Prenom'], $_POST['AdresseMail'], $_POST['MotDePasse'], $_POST['Role']);
+	    $personneInBdd = (new RequestExecuter(Personnes::class))->Select($_POST['ID']);
+	    $password = BaseModel::Cast($personneInBdd, Personnes::class)->MotDePasse;
+
+        $PersonneMAJ = new Personnes($_POST['Nom'], $_POST['Prenom'], $_POST['AdresseMail'], $password, $_POST['Role']);
         $PersonneMAJ->ID = $_POST['ID'];
 
         // met à jour le client

@@ -69,7 +69,6 @@ class RequestBuilder
 		$table = $this->CleanClassNameFromNamespace($table);
 		$datas = $this->Model2Array($model);
 		unset($datas['ID']);
-        var_dump($datas);
 
         $fields = array_keys($datas);
 

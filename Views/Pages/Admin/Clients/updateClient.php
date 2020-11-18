@@ -31,10 +31,6 @@ array("Controller" => "ControlPanel", "Action" => "LstPersonnes")); ?>" style="m
         <label class="col-form-label col-form-label-lg" for="inputLarge">Adresse mail :</label>
         <input name="AdresseMail" class="form-control form-control-lg" type="text" value="<?php echo $Personne->AdresseMail; ?>" id="inputLarge">
     </div>
-    <div class="form-group">
-        <label class="col-form-label col-form-label-lg" for="inputLarge">Modifier mot de passe :</label>
-        <input name="MotDePasse" class="form-control form-control-lg" type="password" value="<?php echo $Personne->MotDePasse; ?>" id="inputLarge">
-    </div>
 
     <div class="form-group">
         <label class="col-form-label col-form-label-lg" for="inputLarge">Modifier le rôle :</label>

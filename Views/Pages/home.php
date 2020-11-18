@@ -24,7 +24,6 @@ use Controllers\Parts\ListDropDown;
 <br>
 
 <?php foreach ($taches as $tache){
-    //todo fix
 	(new BaseBox($tache->Titre, $tache->Contenu, $tache->DateModif, $tache->Status))->Display();
 }
 ?>

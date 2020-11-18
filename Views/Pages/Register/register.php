@@ -27,7 +27,15 @@ use Controllers\Application;
         <label class="col-form-label col-form-label-lg" for="inputLarge">Confirmer mot de passe :</label>
         <input name="conf_MotDePasse" class="form-control form-control-lg" type="password" placeholder="Confirmer" id="inputLarge">
     </div>
-    <button type="submit" class="btn btn-primary" name="register" style="margin: 20px auto;">S'inscrire</button>
+
+    <p>
+        <button type="submit" class="btn btn-primary" name="register" style="margin: 20px auto;">S'inscrire</button>
+
+        <a href="<?= Application::Instance()->Link("SignIn", "Log"); ?>" style="margin-left: 250px">
+            <button type="button" class="btn btn-primary">Se connecter</button>
+        </a>
+    </p>
+
 </form>
 
 
