@@ -77,5 +77,9 @@ class SignIn extends BaseController
             $link = 'index.php';
             header("Location: $link");
         }
+        else{
+	        Application::SetAlert(new Alert(Alert::$Error, "Logs incorrects"));
+	        header('Location: ' .  Application::Instance()->Link('SignIn', 'Log'));
+        }
     }
 }
