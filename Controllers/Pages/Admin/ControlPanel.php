@@ -162,16 +162,6 @@ class ControlPanel Extends BaseController
         // date de modification est aujourd'hui
         $todo->DateModif = date("Y-m-d H:i:s");
 
-        // récupère le status
-        $roleRequest = new RequestBuilder();
-        $roleRequest->Select("*")
-            ->From(Status::class)
-            ->Where("Nom", $todo->Status);
-        $roleTable = new RequestExecuter(Status::class);
-        $roleResult = $roleTable->Execute($roleRequest);
-
-        $todo->Status = $roleResult[0]->ID;
-
         //ajout le model dans la bd
         $todoTable = new RequestExecuter(Todo::class);
         $result = $todoTable->Insert($todo);
