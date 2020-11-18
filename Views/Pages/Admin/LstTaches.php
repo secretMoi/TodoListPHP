@@ -6,7 +6,7 @@ use \Controllers\Parts\Boxes\BaseBox;
  */
 
     if (!empty($variables)): ?>
-        <div style="margin: 50px auto"></div>;
+        <div style="margin: 50px auto"></div>
         <?php foreach ($variables as $tache)
             (new BaseBox($tache->Titre, $tache->Contenu, $tache->DateModif, $tache->Status))->Display();
 
@@ -15,5 +15,5 @@ use \Controllers\Parts\Boxes\BaseBox;
             <p class="align-content-center">
                 Il n'y a pas de client encodé.
             </p>
-        </div>;
+        </div>
 <?php endif; ?>

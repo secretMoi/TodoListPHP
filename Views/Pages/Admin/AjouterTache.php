@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @var array $statusList Liste des status
  * @var array $clientsList Liste des clients
  * @var array $travailleursList Liste des travailleurs
  */
@@ -23,7 +24,7 @@ use Controllers\Parts\ListDropDown;
     </div>
     <div class="form-group">
         <label class="col-form-label col-form-label-lg" for="inputLarge">Status :</label>
-        <input name="Status" class="form-control form-control-lg" type="text" placeholder="Status" id="inputLarge">
+	    <?php (new ListDropDown("Status"))->Elements($statusList); ?>
     </div>
 
     <div class="form-group">

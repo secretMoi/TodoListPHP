@@ -103,13 +103,15 @@ class ControlPanel Extends BaseController
 	 */
 	public function AjouterTache()
     {
-    	// récupère les clients
-    	$req = new RequestBuilder();
-    	$req->Select("*")
-		    ->From(Personnes::class)
-		    ->Where("Role", 2);
+    	$status = (new RequestExecuter(Status::class))->SelectAll();
+	    // création des status pour la liste
+	    $statusList = array();
+	    foreach ($status as $key => $value){
+		    $statusList[$value->ID] = "{$value->Nom}";
+	    }
 
-    	$clients = (new RequestExecuter(Personnes::class))->Execute($req);
+    	// récupère les clients
+	    $clients = $this->GetUsersByRole(2);
 
 	    // création des clients pour la liste
 	    $clientsList = array();
@@ -118,20 +120,26 @@ class ControlPanel Extends BaseController
 	    }
 
 		// récupère les travailleurs
-	    $req->Reset()
-		    ->Select('*')
-		    ->From(Personnes::class)
-		    ->Where("Role", 1);
-
-	    $travailleurs = (new RequestExecuter(Personnes::class))->Execute($req);
+	    $travailleurs = $this->GetUsersByRole(3);
 
 	    // création des clients pour la liste
 	    $travailleursList = array();
-	    foreach ($travailleurs as $key => $value){
+	    foreach ((array) $travailleurs as $key => $value){
 		    $travailleursList[$value->ID] = "{$value->Nom} {$value->Prenom}";
 	    }
 
-        $this->Render("Admin\AjouterTache", compact('clientsList', 'travailleursList'));
+        $this->Render("Admin\AjouterTache", compact('clientsList', 'travailleursList', 'statusList'));
+    }
+
+    private function GetUsersByRole(int $role) : array{
+	    $req = new RequestBuilder();
+
+	    $req->Reset()
+		    ->Select('*')
+		    ->From(Personnes::class)
+		    ->Where("Role", $role);
+
+	    return (new RequestExecuter(Personnes::class))->Execute($req);
     }
 
 	/**
@@ -139,7 +147,6 @@ class ControlPanel Extends BaseController
 	 */
 	public function AjoutTache()
     {
-    	//todo valider client & travailleur
         // vérification des champs
         if (!FormValidator::IsSet($_POST, array("Titre", "Contenu", "Status")))
             return;
