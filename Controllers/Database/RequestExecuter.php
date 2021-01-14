@@ -6,6 +6,7 @@ use Controllers\Application;
 use Controllers\HandleModel;
 use Models\BaseModel;
 use PDO;
+use PDOException;
 
 class RequestExecuter
 {
@@ -62,8 +63,13 @@ class RequestExecuter
 	}
 
 	public function ExecuteSelect(string $req){
-		$result = $this->_database->query($req); // exécute la req
-		$result = $result->fetchAll(PDO::FETCH_ASSOC);
+		try {
+			$result = $this->_database->query($req); // exécute la req
+			$result = $result->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch (PDOException $e) {
+			return null;
+		}
 
 		if(!$result)
 			return null;
@@ -81,9 +87,15 @@ class RequestExecuter
 	}
 
 	public function ExecuteUpdate(string $req, BaseModel $model){
-		$result = $this->_database->prepare($req);
 
-		return $result->execute($this->Model2Array($model));
+		try {
+			$result = $this->_database->prepare($req);
+
+			return $result->execute($this->Model2Array($model));
+		}
+		catch (PDOException $e) {
+			return null;
+		}
 	}
 
 	/**
@@ -93,8 +105,14 @@ class RequestExecuter
 	 */
 	public function Select(int $id) : ?BaseModel{
 		$req = "SELECT * FROM {$this->_table} WHERE ID={$id}"; // req sql
-		$result = $this->_database->query($req); // exécute la req
-		$result = $result->fetch(PDO::FETCH_ASSOC);
+
+		try {
+			$result = $this->_database->query($req); // exécute la req
+			$result = $result->fetch(PDO::FETCH_ASSOC);
+		}
+		catch (PDOException $e) {
+			return null;
+		}
 
 		if(!$result)
 			return null;
@@ -111,8 +129,14 @@ class RequestExecuter
 	 */
 	public function SelectAll() : array{
 		$req = "SELECT * FROM {$this->_table}";
-		$result = $this->_database->query($req);
-		$result = $result->fetchAll(PDO::FETCH_ASSOC);
+
+		try {
+			$result = $this->_database->query($req);
+			$result = $result->fetchAll(PDO::FETCH_ASSOC);
+		}
+		catch (PDOException $e) {
+			return array();
+		}
 
 		$models = array();
 
@@ -143,9 +167,15 @@ class RequestExecuter
 	 */
 	public function Delete(string $field, int $value){
 		$sql = "DELETE FROM {$this->_table} WHERE {$field}={$value}"; // req sql
-		$req = $this->_database->prepare($sql);
 
-		return $req->execute(array($value));
+		try {
+			$req = $this->_database->prepare($sql);
+
+			return $req->execute(array($value));
+		}
+		catch (PDOException $e) {
+			return null;
+		}
 	}
 
 	/**
@@ -173,9 +203,14 @@ class RequestExecuter
 		$req = "INSERT INTO {$this->_table} (" . implode(', ', $fields) . ") ";
 		$req = $req . "VALUES (:" . implode(', :', $fields) . ")";
 
-		$result = $this->_database->prepare($req);
+		try {
+			$result = $this->_database->prepare($req);
 
-		return $result->execute($data);
+			return $result->execute($data);
+		}
+		catch (PDOException $e) {
+			return false;
+		}
 	}
 
 	/**
@@ -199,17 +234,28 @@ class RequestExecuter
 
 		$req .= "WHERE {$fields[0]} = {$data[$fields[0]]}";
 
-		$result = $this->_database->prepare($req);
+		try {
+			$result = $this->_database->prepare($req);
 
-		return $result->execute($data);
+			return $result->execute($data);
+		}
+		catch (PDOException $e) {
+			return false;
+		}
 	}
 
 	/**
 	 * @return int L'id du dernier élément ajouté dans la bdd
 	 */
 	public function LastInsert() : int{
-		return $this->_database->lastInsertId();
+		try {
+			return $this->_database->lastInsertId();
+		}
+		catch (PDOException $e) {
+			return -1;
+		}
 	}
+
 	/**
 	 * Convertit un model en tableau associatif
 	 * @param object $model Model à convertir

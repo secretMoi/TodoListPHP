@@ -3,6 +3,7 @@
 namespace Controllers\Database;
 
 use PDO;
+use PDOException;
 
 class Database
 {
@@ -16,7 +17,12 @@ class Database
 
 	public function __construct()
 	{
-		$this->pdo = new PDO("mysql:host={$this->host};dbname={$this->name};port={$this->port}",$this->user,$this->password);
+		try{
+			$this->pdo = new PDO("mysql:host={$this->host};dbname={$this->name};port={$this->port}",$this->user,$this->password);
+		}
+		catch (PDOException $e) {
+
+		}
 	}
 
 	public function GetConnection(): PDO{

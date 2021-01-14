@@ -23,7 +23,7 @@ class Home extends BaseController
 		$gerer = $table->Execute($gererRequest);
 
 		$taches = array();
-		foreach ($gerer as $gererItem){
+		foreach ((array) $gerer as $gererItem){
 			$tache = (new RequestExecuter(Todo::class))->Select($gererItem->IDTodo);
 
 			array_push($taches, $tache);
